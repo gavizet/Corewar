@@ -3,28 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   add.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuclin <gbuclin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/20 16:31:36 by gbuclin           #+#    #+#             */
-/*   Updated: 2016/09/04 17:07:59 by lgosse           ###   ########.fr       */
+/*   Created: 2018/03/31 15:44:48 by gavizet           #+#    #+#             */
+/*   Updated: 2018/03/31 17:34:57 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include "vm.h"
+
+/*
+	Ajoute le second parametre au premier parametre. Stock l'addition des deux
+	dans le troisieme parametre. Si le resultat est egal a zero, alors le carry
+	passe a 1, sinon a 0. Prend 10 cycles  s'executer.
+
+Verifier que les trois parametre sont bien des registres.
+Si c'est le cas, alors additionner la valeur des deux premier dans le troisieme
+Analyser le resulat. Si > 0, le carry passe a 1. Sinon, il passe a 0.
+*/
 
 void	ft_add(t_vm *vm, t_process *process)
 {
-	if (process->param[0] >= 1 && process->param[0] <= 16
-		&& process->param[1] >= 1 && process->param[1] <= 16
-		&& process->param[2] >= 1 && process->param[2] <= 16)
+	(void)vm;
+	(void)process;
+/*	if (param1 == registre && param2 == registre && param3 == registre)
 	{
-		ft_verbose(vm, process);
-		process->reg[process->param[2] - 1] =
-			process->reg[process->param[0] - 1] +
-			process->reg[process->param[1] - 1];
-		process->carry = !process->reg[process->param[2] - 1];
-		ft_verbose2(process, vm);
-	}
-	else
-		ft_adv_invalid(process, vm);
+		param3 = param1 + param2;
+		if (param3 != 0)
+			carry = 1;
+		carry =0;
+	}*/
 }

@@ -1,7 +1,8 @@
 .name "Testing"
 .comment "Please don4t crash"
 
-ld %-12, r2
-ld %-21, r3
-add r2, r3, r4
-st r4, 8
+ld %0, r4
+zjmp %511
+ld %33, r5
+ld %34, r6
+ld %66, r15

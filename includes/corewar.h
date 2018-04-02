@@ -6,7 +6,7 @@
 /*   By: lgosse <lgosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 17:04:30 by lgosse            #+#    #+#             */
-/*   Updated: 2018/03/31 15:47:41 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/02 19:12:40 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct		s_process
 	int				pc2;
 	int				carry;
 	int				cycle_bf_exe;
-	int				cycles_wo_live;
+	int				cycles_to_die;
 	int				param[3];
 	t_arg_type		param_type[3];
 	char			instruction;

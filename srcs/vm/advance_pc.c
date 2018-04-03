@@ -58,20 +58,23 @@ int		calc_adv(t_process *process)
 
 	i = 0;
 	shift = 1;
-	while (i++ < OP_TAB.nb_param)
+	if (OP_TAB.ocp)
 	{
-		if (process->param_type[i] == REG_CODE)
-			shift += 1;
-		else if (process->param_type[i] == IND_CODE)
-			shift += 2;
-		else if (process->param_type[i] == DIR_CODE)
+		while (i++ < OP_TAB.nb_param)
 		{
-			if (OP_TAB.label_size)
+			if (process->param_type[i] == REG_CODE)
+				shift += 1;
+			else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
 				shift += 2;
 			else
 				shift += 4;
 		}
+		shift += 1;
 	}
+	else if (!OP_TAB.ocp && OP_TAB.label_size)
+		shift += 2;
+	else
+		shift += 4;
 	return(shift);
 }
 

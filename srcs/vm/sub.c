@@ -23,7 +23,7 @@ void	sub(t_vm *vm, t_process *process)
 		if (is_reg(process, 0) && is_reg(process, 1) && is_reg(process, 2))
 		{
 			if (verbose_operations(vm))
-				print_operations(process);
+				ft_printf("P %4d | sub r%d r%d r%d", ID, PARAM(0), PARAM(1), PARAM(2));
 			REG(2) = REG(0) - REG(1);
 			process->carry = (REG(2)) ? 0 : 1;
 		}

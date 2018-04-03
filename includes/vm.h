@@ -67,9 +67,12 @@ typedef struct		s_vm
 # define OPCODE_LFORK	15
 # define OPCODE_AFF		16
 
+# define ID			process->id + 1
+# define PC			process->pc
 # define REG(x)			process->reg[process->param[(x)] - 1]
+# define MEMORY(x)		vm->memory[(unsigned int)(x) % MEM_SIZE]
 # define PARAM(x)		process->param[(x)]
-# define PARAM_TYPE(x)	process->param_type[(x)]
+# define PARAM_TYPE(x)		process->param_type[(x)]
 # define OP_TAB			g_op_tab[(int)process->instruction]
 
 t_process			*ft_parse_process(char *cor_file_name, int nb_next_process,

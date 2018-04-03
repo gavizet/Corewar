@@ -146,8 +146,7 @@ fclean: clean
 		then\
 		$(MAKE) $(LIBFT_PATH) fclean;\
 		rm -f $(VM_NAME);\
-		rm -f $(ASM_NAME);\
-		echo "❌  $(RED)Deleted [./$(VM_NAME)] and [./$(ASM_NAME)] ❌$(NOC)";\
+		echo "❌  $(RED)Deleted [./$(VM_NAME)] ❌$(NOC)";\
 		fi;
 
 re		: fclean all

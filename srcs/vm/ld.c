@@ -22,8 +22,6 @@ void	ld(t_vm *vm, t_process *process)
 
 	if (is_reg(process, 1))
 	{
-		if (verbose_operations(vm))
-			print_operations(process);
 		if (PARAM_TYPE(0) == DIR_CODE)
 			REG(1) = PARAM(0);
 		else if (PARAM_TYPE(0) == IND_CODE)
@@ -31,6 +29,8 @@ void	ld(t_vm *vm, t_process *process)
 			data = circular_mem(process->pc + (PARAM(0) % IDX_MOD));
 			REG(1) = ft_load(vm, 4, data);
 		}
+		if (verbose_operations(vm))
+			ft_printf("P %4d | ld %d r%d\n", ID, REG(1), PARAM(1));
 		process->carry = REG(1) ? 0 : 1;
 	}
 	advance_pc(vm, process);

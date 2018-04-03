@@ -23,7 +23,7 @@ void	add(t_vm *vm, t_process *process)
 		if (is_reg(process, 0) && is_reg(process, 1) && is_reg(process, 2))
 		{
 			if (verbose_operations(vm))
-				ft_printf("P %4d | r%d r%d r%d\n", ID,
+				ft_printf("P %4d | add r%d r%d r%d\n", ID,
 				MEMORY(PC + 2), MEMORY(PC + 3), MEMORY(PC + 4));
 			REG(2) = REG(0) + REG(1);
 			process->carry = (REG(2)) ? 0 : 1;

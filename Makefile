@@ -75,6 +75,7 @@ VM_FILES		=	op.c \
 					add.c \
 					sub.c \
 					ld.c \
+					st.c \
 					is_reg.c \
 					parse_verbose.c \
 					advance_pc.c

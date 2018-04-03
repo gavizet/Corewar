@@ -56,25 +56,19 @@ int		calc_adv(t_process *process)
 	int	i;
 	int shift;
 
-	i = 0;
 	shift = 1;
+	i = OP_TAB.nb_param;
 	if (OP_TAB.ocp)
-	{
-		while (i++ < OP_TAB.nb_param)
-		{
-			if (process->param_type[i] == REG_CODE)
-				shift += 1;
-			else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
-				shift += 2;
-			else
-				shift += 4;
-		}
 		shift += 1;
+	while (--i >= 0)
+	{
+		if (process->param_type[i] == REG_CODE)
+			shift += 1;
+		else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
+			shift += 2;
+		else
+			shift += 4;
 	}
-	else if (!OP_TAB.ocp && OP_TAB.label_size)
-		shift += 2;
-	else
-		shift += 4;
 	return(shift);
 }
 
@@ -90,7 +84,7 @@ int		advance_pc(t_vm *vm, t_process *process)
 	process->pc = next_pc;
 	if (verbose_pc(vm))
 	{
-		ft_printf("ADV %d (%.4p -> %.4p) ", shift, actual_pc,
+		ft_printf("ADV %d (0x%.4x -> 0x%.4x) ", shift, actual_pc,
 				actual_pc + shift);
 		print_adv(vm, actual_pc, shift);
 		ft_printf("\n");

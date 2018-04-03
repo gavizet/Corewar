@@ -65,7 +65,7 @@ void		init_tab_instruction(t_vm *vm)
 {
 	//vm->f[0] = ft_live;
 	vm->f[1] = ld;
-	//vm->f[2] = ft_st;
+	vm->f[2] = st;
 	vm->f[3] = add;
 	vm->f[4] = sub;
 	/*vm->f[5] = ft_and;

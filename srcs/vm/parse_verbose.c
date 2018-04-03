@@ -1,37 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ld.c                                               :+:      :+:    :+:   */
+/*   parse_verbose.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 13:25:42 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/03 14:19:18 by gavizet          ###   ########.fr       */
+/*   Created: 2018/04/03 10:06:25 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/03 12:19:55 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-/*
 
-*/
-
-void	ld(t_vm *vm, t_process *process)
+int	verbose_live(t_vm *vm)
 {
-	int	data;
+	if (vm->verbose & 1)
+		return (1);
+	return (0);
+}
 
-	if (is_reg(process, 1))
-	{
-		if (verbose_operations(vm))
-			printf_operations(process);
-		if (PARAM_TYPE(0) == DIR_CODE)
-			REG(1) = PARAM(0);
-		else if (PARAM_TYPE(0) == IND_CODE)
-		{
-			data = circular_mem(process->pc + (PARAM(0) % IDX_MOD));
-			REG(1) = ft_load(vm, 4, data);
-		}
-		process->carry : REG(1) ? 0 : 1;
-	}
-	advance_pc(vm, process);
+int	verbose_cycle(t_vm *vm)
+{
+	if (vm->verbose & 2)
+		return (1);
+	return (0);
+}
+int	verbose_operations(t_vm *vm)
+{
+	if (vm->verbose & 4)
+		return (1);
+	return (0);
+}
+
+int	verbose_deaths(t_vm *vm)
+{
+	if (vm->verbose & 8)
+		return (1);
+	return (0);
+}
+
+int	verbose_pc(t_vm *vm)
+{
+	if (vm->verbose & 16)
+		return (1);
+	return (0);
 }

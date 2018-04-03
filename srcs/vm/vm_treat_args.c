@@ -6,7 +6,7 @@
 /*   By: lgosse <lgosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/17 13:36:38 by lgosse            #+#    #+#             */
-/*   Updated: 2016/09/21 12:54:28 by gbuclin          ###   ########.fr       */
+/*   Updated: 2018/04/03 12:39:48 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ int			ft_get_opt(t_vm *vm, char *av, int nb_next_process)
 	{
 		if (av[i] == 'a')
 			vm->aff = 1;
-		else if (av[i] == 'v')
-			vm->verbose = 1;
 		else if (av[i] == 'c')
 			vm->ncurses = 1;
 		else if (av[i] == 'G')
@@ -111,6 +109,8 @@ int			ft_treat_args(int ac, char **av, t_vm *vm)
 			vm->dump = ft_atoi(av[i]);
 		else if (!ft_strcmp(av[i], "-n") && i++ && ft_strisint(av[i]))
 			nb_next_process = ft_atoi(av[i]);
+		else if (!ft_strcmp(av[i], "-v") && i++ && ft_strisint(av[i]))
+			vm->verbose = ft_atoi(av[i]);
 		else if (av[i][0] == '-')
 			nb_next_process = ft_get_opt(vm, av[i], nb_next_process);
 		else if (vm->nb_champ++ || 1)

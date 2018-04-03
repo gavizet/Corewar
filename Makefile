@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/03/31 17:17:56 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/03 12:18:47 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,25 +73,9 @@ VM_FILES		=	op.c \
 					ncurses2.c \
 					ncurses3.c	\
 					add.c \
-					aff.c \
-					and.c \
-					fork.c \
-					ld.c \
-					ldi.c \
-					lfork.c \
-					live.c \
-					lld.c \
-					lldi.c \
-					or.c \
-					st.c \
-					sti.c \
-					sub.c \
-					xor.c \
-					zjmp.c \
-					verbose.c \
-					verbose2.c \
-					adv_invalid.c
-
+					is_reg.c \
+					parse_verbose.c \
+					advance_pc.c
 
 VM_HEAD_FILE	= op.h\
 				  vm.h\

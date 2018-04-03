@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add.c                                              :+:      :+:    :+:   */
+/*   ld.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbuclin <gbuclin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/20 16:31:36 by gbuclin           #+#    #+#             */
-/*   Updated: 2018/04/03 10:06:10 by gavizet          ###   ########.fr       */
+/*   Created: 2016/07/20 16:31:57 by gbuclin           #+#    #+#             */
+/*   Updated: 2016/09/09 16:45:58 by gbuclin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vm.h>
 
-void	ft_add(t_vm *vm, t_process *process)
+void	ft_ld(t_vm *vm, t_process *process)
 {
-	if (process->param[0] >= 1 && process->param[0] <= 16
-		&& process->param[1] >= 1 && process->param[1] <= 16
-		&& process->param[2] >= 1 && process->param[2] <= 16)
+	int		adress;
+
+	if (process->param[1] >= 1 && process->param[1] <= 16)
 	{
 		ft_verbose(vm, process);
-		process->reg[process->param[2] - 1] =
-			process->reg[process->param[0] - 1] +
-			process->reg[process->param[1] - 1];
-		process->carry = !process->reg[process->param[2] - 1];
+		if (process->param_type[0] == T_DIR)
+			process->reg[process->param[1] - 1] = process->param[0];
+		else
+		{
+			adress = (process->pc + process->param[0] % IDX_MOD) % MEM_SIZE;
+			if (adress < 0)
+				adress += MEM_SIZE;
+			process->reg[process->param[1] - 1] =
+				ft_load(vm, 4, adress);
+		}
+		process->carry = !process->reg[process->param[1] - 1];
 		ft_verbose2(process, vm);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 17:35:00 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/03 14:19:23 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include "corewar.h"
 
 /*
-** dump = number of cycle before dumping the memory and exiting the program
-** live = number of live in the current cycle_to_die loop
 ** chps_live = binary indicator for champions who said "i'm alive"
 ** last_live = 0, 1, 2 or 3 default -1
 ** aff = default : 0 (hide outputs from aff)
@@ -69,6 +67,9 @@ typedef struct		s_vm
 # define OPCODE_LFORK	15
 # define OPCODE_AFF		16
 
+# define REG(x)			process->reg[process->param[(x)] - 1]
+# define PARAM(x)		process->param[(x)]
+# define PARAM_TYPE(x)	process->param_type[(x)]
 # define OP_TAB			g_op_tab[(int)process->instruction]
 
 t_process			*ft_parse_process(char *cor_file_name, int nb_next_process,
@@ -99,22 +100,22 @@ void				ft_last_check_champ(t_vm *vm);
 ** instructions
 */
 
-void				ft_live(t_vm *vm, t_process *process);
-void				ft_ld(t_vm *vm, t_process *process);
-void				ft_st(t_vm *vm, t_process *process);
-void				ft_add(t_vm *vm, t_process *process);
-void				ft_sub(t_vm *vm, t_process *process);
-void				ft_and(t_vm *vm, t_process *process);
-void				ft_or(t_vm *vm, t_process *process);
-void				ft_xor(t_vm *vm, t_process *process);
-void				ft_zjmp(t_vm *vm, t_process *process);
-void				ft_ldi(t_vm *vm, t_process *process);
-void				ft_sti(t_vm *vm, t_process *process);
-void				ft_fork(t_vm *vm, t_process *process);
-void				ft_lld(t_vm *vm, t_process *process);
-void				ft_lldi(t_vm *vm, t_process *process);
-void				ft_lfork(t_vm *vm, t_process *process);
-void				ft_aff(t_vm *vm, t_process *process);
+void				live(t_vm *vm, t_process *process);
+void				ld(t_vm *vm, t_process *process);
+void				st(t_vm *vm, t_process *process);
+void				add(t_vm *vm, t_process *process);
+void				sub(t_vm *vm, t_process *process);
+void				and(t_vm *vm, t_process *process);
+void				or(t_vm *vm, t_process *process);
+void				xor(t_vm *vm, t_process *process);
+void				zjmp(t_vm *vm, t_process *process);
+void				ldi(t_vm *vm, t_process *process);
+void				sti(t_vm *vm, t_process *process);
+void				fork(t_vm *vm, t_process *process);
+void				lld(t_vm *vm, t_process *process);
+void				lldi(t_vm *vm, t_process *process);
+void				lfork(t_vm *vm, t_process *process);
+void				aff(t_vm *vm, t_process *process);
 void				ft_print_reg(t_process *process, int i);
 
 /*
@@ -128,12 +129,22 @@ int					ft_load(t_vm *vm, int size, int adress);
 ** verbose
 */
 
-void				ft_adv_invalid(t_process *process, t_vm *vm);
+int					is_reg(t_process *process, int nb_param);
+int					circular_mem(int adress);
+void				print_operations(t_process *process);
+void				print_adv(t_vm *vm, int actual_pc, int shift);
+int					calc_adv(t_process *process);
+int					advance_pc(t_vm *vm, t_process *process);
+
+int					verbose_live(t_vm *vm);
+int					verbose_cycle(t_vm *vm);
+int					verbose_operations(t_vm *vm);
+int					verbose_deaths(t_vm *vm);
+int					verbose_pc(t_vm *vm);
+
+
+
 void				ft_print_ind(t_vm *vm, t_process *process, int i);
-void				ft_verbose(t_vm *vm, t_process *process);
-void				ft_verbose2(t_process *process, t_vm *vm);
-void				ft_verbose3(t_process *process, t_vm *vm);
-int					ft_verbose5(t_process *process);
 void				ft_print_pc(t_vm *vm, t_process *process);
 void				ft_print_octet(t_vm *vm, int adress);
 void				ft_erase_pc(t_vm *vm, t_process *process);

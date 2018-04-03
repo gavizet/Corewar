@@ -6,7 +6,7 @@
 /*   By: gbuclin <gbuclin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/20 14:17:46 by gbuclin           #+#    #+#             */
-/*   Updated: 2016/09/15 19:41:35 by lgosse           ###   ########.fr       */
+/*   Updated: 2018/04/03 12:35:43 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_check_champs_live(t_vm *vm, t_list *prev, t_list *current_process)
 	process = current_process->content;
 	if (process->cycles_wo_live >= vm->cycle_to_die)
 	{
-		if (vm->verbose)
+		if (verbose_deaths(vm))
 			ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 				process->id + 1, process->cycles_wo_live, vm->cycle_to_die);
 		ft_savage_slaughter(vm, prev, current_process);
@@ -61,7 +61,7 @@ void	ft_decrement_cycle_to_die(t_vm *vm)
 	t_process	*champ;
 
 	vm->cycle_to_die -= CYCLE_DELTA;
-	if (vm->verbose)
+	if (verbose_cycle(vm))
 		ft_printf("Cycle to die is now %d\n", vm->cycle_to_die);
 	vm->nb_checks = 0;
 	champs = vm->champions;
@@ -108,7 +108,7 @@ int		ft_launch_vm(t_vm *vm)
 
 	while (vm->total_cycles != vm->dump + 1 && vm->processes)
 	{
-		if (vm->verbose)
+		if (verbose_cycle(vm))
 			ft_printf("It is now cycle %d\n", vm->total_cycles);
 		current_process = vm->processes;
 		while (current_process)

@@ -111,7 +111,6 @@ void				xor(t_vm *vm, t_process *process);
 void				zjmp(t_vm *vm, t_process *process);
 void				ldi(t_vm *vm, t_process *process);
 void				sti(t_vm *vm, t_process *process);
-void				fork(t_vm *vm, t_process *process);
 void				lld(t_vm *vm, t_process *process);
 void				lldi(t_vm *vm, t_process *process);
 void				lfork(t_vm *vm, t_process *process);

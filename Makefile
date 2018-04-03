@@ -73,6 +73,8 @@ VM_FILES		=	op.c \
 					ncurses2.c \
 					ncurses3.c	\
 					add.c \
+					sub.c \
+					ld.c \
 					is_reg.c \
 					parse_verbose.c \
 					advance_pc.c

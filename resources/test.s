@@ -6,3 +6,6 @@ ld 2, r13
 add r2, r3, r4
 add r5, r6, r7
 ld %12, r17
+st r3, r8
+st r14, 24
+st r14, r19

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 12:07:05 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 14:15:42 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void				ft_print_reg(t_process *process, int i);
 ** utilities
 */
 
-void				ft_store(t_vm *vm, t_process *process, int adress);
+void				store_reg(t_vm *vm, int adress, int reg_val);
 int					ft_load(t_vm *vm, int size, int adress);
 
 /*

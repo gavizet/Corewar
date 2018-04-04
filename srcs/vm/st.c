@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 10:31:52 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 12:07:01 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 13:04:03 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	st(t_vm *vm, t_process *process)
 		else if (PARAM_TYPE(1) == IND_CODE)
 		{
 			data = circular_mem(PC + (PARAM(1) % IDX_MOD));
-			ft_store(vm, process, data);
+			store_reg(vm, data, REG(0));
 			if (verbose_operations(vm))
 				ft_printf("P %4d | st r%d %d\n", ID, PARAM(0), PARAM(1));
 		}

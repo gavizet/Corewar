@@ -6,7 +6,7 @@
 /*   By: gbuclin <gbuclin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 14:08:12 by gbuclin           #+#    #+#             */
-/*   Updated: 2018/04/03 13:26:09 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 14:02:56 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void		init_tab_instruction(t_vm *vm)
 	vm->f[2] = st;
 	vm->f[3] = add;
 	vm->f[4] = sub;
-	/*vm->f[5] = ft_and;
-	vm->f[6] = ft_or;
+	vm->f[5] = and;
+	/*vm->f[6] = ft_or;
 	vm->f[7] = ft_xor;
 	vm->f[8] = ft_zjmp;
 	vm->f[9] = ft_ldi;

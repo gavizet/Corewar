@@ -1,0 +1,18 @@
+4c4
+< /*   or.c                                               :+:      :+:    :+:   */
+---
+> /*   xor.c                                              :+:      :+:    :+:   */
+8,9c8,9
+< /*   Created: 2016/07/20 16:32:32 by gbuclin           #+#    #+#             */
+< /*   Updated: 2018/04/04 15:20:45 by gavizet          ###   ########.fr       */
+---
+> /*   Created: 2016/07/20 16:32:58 by gbuclin           #+#    #+#             */
+> /*   Updated: 2016/09/10 11:36:35 by lgosse           ###   ########.fr       */
+31c31
+< void		ft_or(t_vm *vm, t_process *process)
+---
+> void		ft_xor(t_vm *vm, t_process *process)
+45c45
+< 		process->reg[process->param[2] - 1] = val1 | val2;
+---
+> 		process->reg[process->param[2] - 1] = val1 ^ val2;

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 15:15:21 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 19:29:38 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void				zjmp(t_vm *vm, t_process *process);
 void				ldi(t_vm *vm, t_process *process);
 void				sti(t_vm *vm, t_process *process);
 void				lld(t_vm *vm, t_process *process);
+void				my_fork(t_vm *vm, t_process *process);
 void				lldi(t_vm *vm, t_process *process);
 void				lfork(t_vm *vm, t_process *process);
 void				aff(t_vm *vm, t_process *process);

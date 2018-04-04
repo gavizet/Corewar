@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 10:26:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/03 13:20:43 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 19:18:21 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,25 @@ int		calc_adv(t_process *process)
 	shift = 1;
 	i = OP_TAB.nb_param;
 	if (OP_TAB.ocp)
-		shift += 1;
-	while (--i >= 0)
 	{
-		if (process->param_type[i] == REG_CODE)
-			shift += 1;
-		else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
-			shift += 2;
-		else
-			shift += 4;
+		shift += 1;
+		while (--i >= 0)
+		{
+			if (process->param_type[i] == REG_CODE)
+				shift += 1;
+			else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
+				shift += 2;
+			else
+				shift += 4;
+		}
 	}
-	return(shift);
+	else if (!OP_TAB.ocp && OP_TAB.label_size)
+	{
+		shift += 2;
+	}
+	else
+		shift += 4;
+	return (shift);
 }
 
 int		advance_pc(t_vm *vm, t_process *process)

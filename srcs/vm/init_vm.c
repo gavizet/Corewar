@@ -6,7 +6,7 @@
 /*   By: gbuclin <gbuclin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 14:08:12 by gbuclin           #+#    #+#             */
-/*   Updated: 2018/04/04 14:02:56 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 17:48:20 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ void		ft_init_process(t_process *process)
 
 void		init_tab_instruction(t_vm *vm)
 {
-	//vm->f[0] = ft_live;
+	//vm->f[0] = live;
 	vm->f[1] = ld;
 	vm->f[2] = st;
 	vm->f[3] = add;
 	vm->f[4] = sub;
 	vm->f[5] = and;
-	/*vm->f[6] = ft_or;
-	vm->f[7] = ft_xor;
-	vm->f[8] = ft_zjmp;
-	vm->f[9] = ft_ldi;
-	vm->f[10] = ft_sti;
-	vm->f[11] = ft_fork;
-	vm->f[12] = ft_lld;
-	vm->f[13] = ft_lldi;
-	vm->f[14] = ft_lfork;
-	vm->f[15] = ft_aff;*/
+	vm->f[6] = or;
+	vm->f[7] = xor;
+	//vm->f[8] = zjmp;
+	vm->f[9] = ldi;
+	vm->f[10] = sti;
+	vm->f[11] = my_fork;
+	vm->f[12] = lld;
+	vm->f[13] = lldi;
+	/*vm->f[14] = lfork;
+	vm->f[15] = aff;*/
 }

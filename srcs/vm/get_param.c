@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 15:15:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 15:16:01 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 16:23:44 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int		get_param(int param_nb, t_vm *vm, t_process *process)
 	else if (PARAM_TYPE(param_nb) == IND_CODE)
 		param_value = ft_load(vm, 4, PC + (PARAM(param_nb) % IDX_MOD));
 	else
-		return (0);
+		return (-1);
 	return (param_value);
 }

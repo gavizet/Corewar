@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   and.c                                              :+:      :+:    :+:   */
+/*   lld.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/04 13:04:54 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 15:36:43 by gavizet          ###   ########.fr       */
+/*   Created: 2018/04/04 16:51:56 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/04 17:03:46 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	and(t_vm *vm, t_process *process)
+void	lld(t_vm *vm, t_process *process)
 {
-	int param_value[2];
+	int	data;
 
-	if (is_reg(process, 2))
+	if (is_reg(process, 1))
 	{
-		param_value[0] = get_param(0, vm, process);
-		param_value[1] = get_param(1, vm, process);
-		REG(2) = param_value[0] & param_value[1];
-		process->carry = REG(2) ? 0 : 1;
+		if (PARAM_TYPE(0) == DIR_CODE)
+			REG(1) = PARAM(0);
+		else if (PARAM_TYPE(0) == IND_CODE)
+		{
+			data = circular_mem(PC + PARAM(0));
+			REG(1) = ft_load(vm, 4, data);
+		}
 		if (verbose_operations(vm))
-			ft_printf("P% 5d | and %d %d r%d\n", ID, param_value[0], param_value[1],
-				PARAM(2));
+			ft_printf("P %4d | lld %d r%d\n", ID, REG(1), PARAM(1));
+		process->carry = REG(1) ? 0 : 1;
 	}
 	advance_pc(vm, process);
 }

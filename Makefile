@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/04 14:15:39 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/04 15:16:40 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ VM_FILES		=	op.c \
 					ld.c \
 					st.c \
 					and.c \
+					get_param.c \
 					is_reg.c \
 					parse_verbose.c \
 					advance_pc.c

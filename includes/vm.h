@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 14:15:42 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/04 15:15:21 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int					ft_load(t_vm *vm, int size, int adress);
 /*
 ** verbose
 */
-
+int					get_param(int param_nb, t_vm *vm, t_process *process);
 int					is_reg(t_process *process, int nb_param);
 int					circular_mem(int adress);
 void				print_operations(t_process *process);

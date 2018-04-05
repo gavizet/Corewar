@@ -84,6 +84,9 @@ VM_FILES		=	op.c \
 					lldi.c \
 					sti.c \
 					fork.c \
+					aff.c \
+					zjmp.c \
+					live.c \
 					get_param.c \
 					is_reg.c \
 					parse_verbose.c \

@@ -72,9 +72,7 @@ int		calc_adv(t_process *process)
 		}
 	}
 	else if (!OP_TAB.ocp && OP_TAB.label_size)
-	{
 		shift += 2;
-	}
 	else
 		shift += 4;
 	return (shift);

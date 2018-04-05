@@ -63,7 +63,7 @@ void		ft_init_process(t_process *process)
 
 void		init_tab_instruction(t_vm *vm)
 {
-	//vm->f[0] = live;
+	vm->f[0] = live;
 	vm->f[1] = ld;
 	vm->f[2] = st;
 	vm->f[3] = add;
@@ -71,12 +71,12 @@ void		init_tab_instruction(t_vm *vm)
 	vm->f[5] = and;
 	vm->f[6] = or;
 	vm->f[7] = xor;
-	//vm->f[8] = zjmp;
+	vm->f[8] = zjmp;
 	vm->f[9] = ldi;
 	vm->f[10] = sti;
 	vm->f[11] = my_fork;
 	vm->f[12] = lld;
 	vm->f[13] = lldi;
 	vm->f[14] = my_lfork;
-	//vm->f[15] = aff;
+	vm->f[15] = aff;
 }

@@ -77,6 +77,6 @@ void		init_tab_instruction(t_vm *vm)
 	vm->f[11] = my_fork;
 	vm->f[12] = lld;
 	vm->f[13] = lldi;
-	/*vm->f[14] = lfork;
-	vm->f[15] = aff;*/
+	vm->f[14] = my_lfork;
+	//vm->f[15] = aff;
 }

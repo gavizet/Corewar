@@ -1,5 +1,5 @@
 Introducing contestants...
-* Player 1, weighing 18 bytes, "Test sdi : instruction 11" ("Does sdi work ?") !
+* Player 1, weighing 55 bytes, "Test sti : instruction 11" ("Does sti work ?") !
 It is now cycle 1
 It is now cycle 2
 It is now cycle 3
@@ -25,6 +25,9 @@ It is now cycle 22
 It is now cycle 23
 It is now cycle 24
 It is now cycle 25
+P    1 | sti r2 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 0)
+ADV 5 (0x0000 -> 0x0005) 00 00 00 00 04 
 It is now cycle 26
 It is now cycle 27
 It is now cycle 28
@@ -50,6 +53,9 @@ It is now cycle 47
 It is now cycle 48
 It is now cycle 49
 It is now cycle 50
+P    1 | sti r2 192414208 0
+       | -> store to 192414208 + 0 = 192414208 (with pc and mod 5)
+ADV 6 (0x0005 -> 0x000b) 00 00 00 00 0c 04 
 It is now cycle 51
 It is now cycle 52
 It is now cycle 53
@@ -75,6 +81,9 @@ It is now cycle 72
 It is now cycle 73
 It is now cycle 74
 It is now cycle 75
+P    1 | sti r2 0 12
+       | -> store to 0 + 12 = 12 (with pc and mod 23)
+ADV 6 (0x000b -> 0x0011) 0b 58 02 08 00 0c 
 It is now cycle 76
 It is now cycle 77
 It is now cycle 78
@@ -100,6 +109,9 @@ It is now cycle 97
 It is now cycle 98
 It is now cycle 99
 It is now cycle 100
+P    1 | sti r2 8 0
+       | -> store to 8 + 0 = 8 (with pc and mod 25)
+ADV 7 (0x0011 -> 0x0018) 0b 78 02 00 07 00 00 
 It is now cycle 101
 It is now cycle 102
 It is now cycle 103
@@ -131,6 +143,9 @@ It is now cycle 128
 It is now cycle 129
 It is now cycle 130
 It is now cycle 131
+P    1 | sti r2 191365632 0
+       | -> store to 191365632 + 0 = 191365632 (with pc and mod 30)
+ADV 6 (0x001e -> 0x0024) 00 00 00 00 0c 04 
 It is now cycle 132
 It is now cycle 133
 It is now cycle 134
@@ -156,6 +171,9 @@ It is now cycle 153
 It is now cycle 154
 It is now cycle 155
 It is now cycle 156
+P    1 | sti r2 42 0
+       | -> store to 42 + 0 = 42 (with pc and mod 78)
+ADV 6 (0x0024 -> 0x002a) 0b 64 02 00 2a 07 
 It is now cycle 157
 It is now cycle 158
 It is now cycle 159
@@ -181,6 +199,9 @@ It is now cycle 178
 It is now cycle 179
 It is now cycle 180
 It is now cycle 181
+P    1 | sti r2 234 12
+       | -> store to 234 + 12 = 246 (with pc and mod 288)
+ADV 7 (0x002a -> 0x0031) 0b 68 02 00 ea 00 0c 
 It is now cycle 182
 It is now cycle 183
 It is now cycle 184
@@ -206,6 +227,9 @@ It is now cycle 203
 It is now cycle 204
 It is now cycle 205
 It is now cycle 206
+P    1 | sti r2 343 0
+       | -> store to 343 + 0 = 343 (with pc and mod 392)
+ADV 6 (0x0031 -> 0x0037) 0b 64 02 01 57 02 
 It is now cycle 207
 It is now cycle 208
 It is now cycle 209
@@ -800,8 +824,6 @@ It is now cycle 797
 It is now cycle 798
 It is now cycle 799
 It is now cycle 800
-P    1 | fork -1 (-1)
-ADV 3 (0x0000 -> 0x0003) 0c ff ff 
 It is now cycle 801
 It is now cycle 802
 It is now cycle 803
@@ -1538,6 +1560,5 @@ It is now cycle 1533
 It is now cycle 1534
 It is now cycle 1535
 It is now cycle 1536
-Process 2 hasn't lived for 1536 cycles (CTD 1536)
 Process 1 hasn't lived for 1536 cycles (CTD 1536)
-Contestant 1, "Test sdi : instruction 11", has won !
+Contestant 1, "Test sti : instruction 11", has won !

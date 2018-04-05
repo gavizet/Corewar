@@ -1,5 +1,5 @@
 Introducing contestants...
-* Player 1, weighing 3 bytes, "Test sdi : instruction 11" ("Does sdi work ?") !
+* Player 1, weighing 18 bytes, "Test sdi : instruction 11" ("Does sdi work ?") !
 It is now cycle 1
 It is now cycle 2
 It is now cycle 3
@@ -800,8 +800,8 @@ It is now cycle 797
 It is now cycle 798
 It is now cycle 799
 It is now cycle 800
-P    1 | fork 12 (12)
-ADV 3 (0x0000 -> 0x0003) 0c 00 0c 
+P    1 | fork -1 (-1)
+ADV 3 (0x0000 -> 0x0003) 0c ff ff 
 It is now cycle 801
 It is now cycle 802
 It is now cycle 803

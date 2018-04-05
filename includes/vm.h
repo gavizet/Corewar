@@ -117,7 +117,7 @@ void				sti(t_vm *vm, t_process *process);
 void				lld(t_vm *vm, t_process *process);
 void				my_fork(t_vm *vm, t_process *process);
 void				lldi(t_vm *vm, t_process *process);
-void				lfork(t_vm *vm, t_process *process);
+void				my_lfork(t_vm *vm, t_process *process);
 void				aff(t_vm *vm, t_process *process);
 void				ft_print_reg(t_process *process, int i);
 

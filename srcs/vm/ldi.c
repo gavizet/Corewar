@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 15:25:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 17:29:07 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 19:16:52 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ldi(t_vm *vm, t_process *process)
 			{
 				ft_printf("P %4d | ldi %d %d r%d\n", ID, value[0], value[1], PARAM(2));
 				ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",
-					value[0], value[1], value[0] + value[1], adress_to_load);
+					value[0], value[1], value[0] + value[1], PC + (value[0] + value[1]) % IDX_MOD);
 			}
 		}
 	}

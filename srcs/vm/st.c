@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 10:31:52 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/06 11:34:00 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 16:52:04 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	st(t_vm *vm, t_process *process)
 			if (verbose_operations(vm))
 				ft_printf("P %4d | st r%d %d\n", ID, PARAM(0), PARAM(1));
 		}
-		process->carry = REG(0) ? 0 : 1 ;
+		//process->carry = REG(0) ? 0 : 1 ;
+		//ft_printf("st : carry == [%d]\n", process->carry);
+		//ft_printf("st : registre == [%d]\n", REG(0));
 	}
 	advance_pc(vm, process);
 }

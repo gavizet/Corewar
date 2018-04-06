@@ -22,14 +22,14 @@ then
 fi
 ./zaz_corewar -v $b test/$nb_test.cor > test/result_test$nb_test.Zaz
 ./corewar -v $b test/$nb_test.cor > test/result_test$nb_test.Us
-diff test/result_test$nb_test.Zaz test/result_test$nb_test.Us > test/diff
-printf "\n------------------ DIFF ----------------\n"
-if [ !test/diff ]
-then
-	printf "PAS DE DIFF :D\n"
-fi
-	cat test/diff
-printf "\n------------------ CMP ----------------\n"
+# diff test/result_test$nb_test.Zaz test/result_test$nb_test.Us > test/diff
+# printf "\n------------------ DIFF ----------------\n"
+# if [ !test/diff ]
+# then
+# 	printf "PAS DE DIFF :D\n"
+# fi
+# 	cat test/diff
+# printf "\n------------------ CMP ----------------\n"
 cmp test/result_test$nb_test.Zaz test/result_test$nb_test.Us > test/cmp
 if [ !test/cmp ]
 then

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 13:22:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/03 13:25:17 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 11:23:42 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	sub(t_vm *vm, t_process *process)
 		if (is_reg(process, 0) && is_reg(process, 1) && is_reg(process, 2))
 		{
 			if (verbose_operations(vm))
-				ft_printf("P %4d | sub r%d r%d r%d", ID, PARAM(0), PARAM(1), PARAM(2));
+				ft_printf("P %4d | sub r%d r%d r%d\n", ID, PARAM(0), PARAM(1), PARAM(2));
 			REG(2) = REG(0) - REG(1);
-			process->carry = (REG(2)) ? 0 : 1;
+			process->carry = REG(2) ? 0 : 1;
 		}
 		advance_pc(vm, process);
 }

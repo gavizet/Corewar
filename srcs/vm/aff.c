@@ -8,7 +8,7 @@ void	aff(t_vm *vm, t_process *process)
 	{
 		character = REG(0) % 256;
 		ft_printf("Aff : %c\n", (char)character);
-		process->carry = (!character) ? 1 : 0;
+		process->carry = character ? 0 : 1;
 	}
 	advance_pc(vm, process);
 }

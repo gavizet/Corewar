@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 10:26:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 19:18:21 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 12:08:20 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,6 @@ int		circular_mem(int adress)
 		return ((adress % MEM_SIZE) + MEM_SIZE);
 	else
 		return (adress % MEM_SIZE);
-}
-
-void	print_operations(t_process *process)
-{
-	int	i;
-
-	i = -1;
-	ft_printf("P %4d | %s", process->id + 1, OP_TAB.name);
-	while (++i < OP_TAB.nb_param)
-	{
-		ft_putchar(' ');
-		if (process->param_type[i] == REG_CODE)
-			ft_printf("r"); // cast en char, et printf avec %hhd
-		else if (process->param_type[i] == IND_CODE || OP_TAB.label_size)
-			ft_printf("IND"); // cast en short, et printf avec %hd
-		else if (process->param_type[i] == DIR_CODE && !OP_TAB.label_size)
-			ft_printf("%d", (int)PARAM(i));
-	}
-	ft_printf("\n");
 }
 
 void	print_adv(t_vm *vm, int actual_pc, int shift)
@@ -60,7 +41,6 @@ int		calc_adv(t_process *process)
 	i = OP_TAB.nb_param;
 	if (OP_TAB.ocp)
 	{
-		shift += 1;
 		while (--i >= 0)
 		{
 			if (process->param_type[i] == REG_CODE)
@@ -70,6 +50,7 @@ int		calc_adv(t_process *process)
 			else
 				shift += 4;
 		}
+		shift += 1;
 	}
 	else if (!OP_TAB.ocp && OP_TAB.label_size)
 		shift += 2;

@@ -6,7 +6,7 @@
 /*   By: lgosse <lgosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 18:27:02 by lgosse            #+#    #+#             */
-/*   Updated: 2018/04/04 15:48:49 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 13:33:28 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ft_print_invalid_ocp(t_vm *vm, t_process *process, int adv)
 	if (!vm->verbose)
 		return ;
 	idx = 2;
-	ft_printf("ADV %d (%.4p -> %.4p) %.2x %.2x ", adv, process->pc,
+	ft_printf("ADV %d (0x%.4x -> 0x%.4x) %.2x %.2x ", adv, process->pc,
 		process->pc + adv, vm->memory[(process->pc) % MEM_SIZE],
 		vm->memory[(process->pc + 1) % MEM_SIZE]);
 	while (idx < adv)

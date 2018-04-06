@@ -28,11 +28,11 @@ if [ !test/diff ]
 then
 	printf "PAS DE DIFF :D\n"
 fi
-cat test/diff
+	cat test/diff
 printf "\n------------------ CMP ----------------\n"
 cmp test/result_test$nb_test.Zaz test/result_test$nb_test.Us > test/cmp
 if [ !test/cmp ]
 then
 	printf "COMPARAISON OK :D\n"
 fi
-cat test/cmp
+	cat test/cmp

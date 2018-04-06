@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 19:19:23 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 19:29:32 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/06 14:53:00 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static void		copy_process(t_vm *vm, t_process *process, t_process *copy)
 	while (nb--)
 		copy->reg[nb] = process->reg[nb];
 	copy->id_champ = process->id_champ;
+	copy->pc = circular_mem(PC + PARAM(0));
 	copy->id = vm->nb_process++;
 	copy->header = process->header;
 	copy->carry = process->carry;
 	copy->cycles_wo_live = process->cycles_wo_live;
 	copy->color = process->color;
+	copy->pc = circular_mem(PC + (PARAM(0) % IDX_MOD));
 	ft_lstadd(&vm->processes, ft_lstnew(copy, sizeof(t_process)));
 }
 
@@ -51,10 +53,9 @@ void			my_fork(t_vm *vm, t_process *process)
 	t_process	*copy;
 
 	copy = create_new_process();
-	copy->pc = circular_mem(PC + (PARAM(0) % IDX_MOD));
 	copy_process(vm, process, copy);
 	if (verbose_operations(vm))
-		ft_printf("P% 5d | fork %hd (%hhd)\n", ID, PARAM(0), copy->pc);
+		ft_printf("P% 5d | fork %hd (%d)\n", ID, PARAM(0), PC + (short)PARAM(0) % IDX_MOD);
 	advance_pc(vm, process);
 }
 
@@ -63,9 +64,8 @@ void			my_lfork(t_vm *vm, t_process *process)
 	t_process	*copy;
 
 	copy = create_new_process();
-	copy->pc = circular_mem(PC + PARAM(0));
 	copy_process(vm, process, copy);
 	if (verbose_operations(vm))
-		ft_printf("P% 5d | fork %hd (%hhd)\n", ID, PARAM(0), copy->pc);
+		ft_printf("P% 5d | lfork %hd (%d)\n", ID, PARAM(0), PC + (short)PARAM(0));
 	advance_pc(vm, process);
 }

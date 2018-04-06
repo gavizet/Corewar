@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   live.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/06 09:27:20 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/06 14:53:22 by gavizet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
 char	*get_player(t_vm *vm, int nb_champ)
@@ -23,16 +35,16 @@ void	live(t_vm *vm, t_process *process)
 {
 	char	*player;
 
-	process->cycles_wo_live = 0;
-	vm->live += 1;
 	if (verbose_operations(vm))
 		ft_printf("P% 5d | live %d\n", ID, PARAM(0));
+	process->cycles_wo_live = 0;
+	vm->live++;
 	player = get_player(vm, PARAM(0));
 	if (player)
 	{
 		vm->last_live = PARAM(0);
 		if (verbose_live(vm))
-			ft_printf("Player %d (%s) is said to be alive\n", PARAM(0), player);
+			ft_printf("Player %d (%s) is said to be alive\n", ft_abs(PARAM(0)), player);
 	}
 	advance_pc(vm, process);
 }

@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/06 12:21:26 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/10 11:00:39 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ LIBFT			= -L $(LIBFT_PATH) -lft
 .PHONY	:	libft all clean fclean re
 
 #----------------------------------| RULES |-----------------------------------#
-all: libft $(VM_NAME)
+all: libft $(VM_NAME) $(ASM_NAME)
 
 libft:
 	@$(MAKE) $(LIBFT_PATH)
@@ -159,7 +159,8 @@ fclean: clean
 		then\
 		$(MAKE) $(LIBFT_PATH) fclean;\
 		rm -f $(VM_NAME);\
-		echo "❌  $(RED)Deleted [./$(VM_NAME)] ❌$(NOC)";\
+		rm -f $(ASM_NAME);\
+		echo "❌  $(RED)Deleted [./$(VM_NAME)] and [./$(ASM_NAME)] ❌$(NOC)";\
 		fi;
 
 re		: fclean all

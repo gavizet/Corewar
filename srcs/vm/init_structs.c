@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   init_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 14:42:26 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/15 18:57:13 by gavizet          ###   ########.fr       */
+/*   Created: 2018/04/14 13:36:30 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/14 13:42:41 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#inclide "asm.h"
 
-char	*ft_strtrim(char const *s)
+void	init_file(t_asm *file)
 {
-	int	i;
-	int	len;
-	int	start;
+	ft_bzero(file->header.prog_name, );
+	ft_bzero(file->header.comment)
+}
 
-	if (!s || !*s)
-		return (NULL);
-	i = 0;
-	while (s[i] && (s[i] == '\n' || s[i] == '\t' || s[i] == ' '))
-		i++;
-	if (s[i] == '\0')
-		return (ft_strnew(0));
-	start = i;
-	i = ft_strlen((char*)s) - 1;
-	while (s[i] == '\n' || s[i] == '\t' || s[i] == ' ')
-		i--;
-	len = i - start + 1;
-	return (ft_strsub(s, start, len));
+void	init_token(t_token *token)
+{
+
+}
+
+void	init_line(t_line *line)
+{
+
 }

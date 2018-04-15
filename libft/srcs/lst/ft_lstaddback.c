@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 16:50:21 by gavizet           #+#    #+#             */
-/*   Updated: 2016/11/30 15:46:00 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/15 17:51:21 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void	ft_lstaddback(t_list **alst, t_list *new)
 
 	if (!alst || !new)
 		return ;
-	tmp = *alst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	else if (!(*alst))
+		*alst = new;
+	else
+	{
+		tmp = *alst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }

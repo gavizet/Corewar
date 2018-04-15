@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/06 19:40:33 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/14 13:25:25 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,8 @@
 
 # include <locale.h>
 # include <ncurses.h>
+# include <errno.h>
 # include "corewar.h"
-
-/*
-** chps_live = binary indicator for champions who said "i'm alive"
-** last_live = 0, 1, 2 or 3 default -1
-** aff = default : 0 (hide outputs from aff)
-** ctd_decrem = default 0, if the ctd is decrease ctd_decrem = 1
-** 				when ctd_decrem = 1 the cycles_wo_live of all processes
-** 				are reset
-*/
 
 typedef struct		s_vm
 {

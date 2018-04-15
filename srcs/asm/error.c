@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 14:42:26 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/15 18:57:13 by gavizet          ###   ########.fr       */
+/*   Created: 2018/04/14 13:23:09 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/14 17:04:17 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vm.h"
 
-char	*ft_strtrim(char const *s)
+void	error(char *error)
 {
-	int	i;
-	int	len;
-	int	start;
-
-	if (!s || !*s)
-		return (NULL);
-	i = 0;
-	while (s[i] && (s[i] == '\n' || s[i] == '\t' || s[i] == ' '))
-		i++;
-	if (s[i] == '\0')
-		return (ft_strnew(0));
-	start = i;
-	i = ft_strlen((char*)s) - 1;
-	while (s[i] == '\n' || s[i] == '\t' || s[i] == ' ')
-		i--;
-	len = i - start + 1;
-	return (ft_strsub(s, start, len));
+	if (errno != 0)
+		perror(error);
+	else
+		ft_putendl_fd(error, 2);
+	exit(EXIT_FAILURE);
 }

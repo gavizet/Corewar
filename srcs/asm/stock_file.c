@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 11:00:21 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/15 19:14:30 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/19 16:06:55 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		stock_line(t_asm *file, char *str, int line_nb)
 	{
 		//ft_printf("TEST LABEL 1 \n");
 		split_line = ft_strsplit(str, LABEL_CHAR);
-		if (!init_line(file, LINE_TYPE_LABEL, split_line[0], line_nb))
+		if (!init_line(file, LINE_TYPE_LABEL, ft_strcat(split_line[0], ":"), line_nb))
 			return (-1);
 		//ft_printf("TEST LABEL 2 \n");
 		if (!line_is_empty(split_line[1]))

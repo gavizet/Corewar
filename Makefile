@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/15 19:06:54 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/19 16:20:06 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ HEADERS_PATH	= includes/
 
 #--------------------------------| ASM FILES |---------------------------------#
 ASM_FILES		= asm.c\
+				  op.c\
 				  init_structs.c\
 				  stock_file.c\
 				  parse_file.c\

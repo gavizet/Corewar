@@ -6,11 +6,11 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 11:00:21 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/19 16:06:55 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:43:44 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "asm.h"
+#include "asm.h"
 
 int		line_contains_label_char(char *str)
 {
@@ -40,14 +40,11 @@ int		stock_line(t_asm *file, char *str, int line_nb)
 	}
 	else
 	{
-		//ft_printf("TEST LABEL 1 \n");
 		split_line = ft_strsplit(str, LABEL_CHAR);
 		if (!init_line(file, LINE_TYPE_LABEL, ft_strcat(split_line[0], ":"), line_nb))
 			return (-1);
-		//ft_printf("TEST LABEL 2 \n");
 		if (!line_is_empty(split_line[1]))
 		{
-			//ft_printf("TEST LABEL 3 \n");
 			if (!init_line(file, LINE_TYPE_INSTRU, split_line[1],
 					line_nb))
 			{
@@ -66,16 +63,16 @@ int		stock_file(t_asm *file, int fd)
 	int		line_nb;
 
 	str = NULL;
-	line_nb = 0;
+	line_nb = 1;
 	while (get_next_line(fd, &str))
 	{
 		if (str && *str && !line_is_empty(str) && line_is_comment(str))
 		{
 			if (!stock_line(file, str, line_nb))
-				return (-1);
-			line_nb++;
+				return (1);
 		}
 		ft_strdel(&str);
+		line_nb++;
 	}
-	return (1);
+	return (0);
 }

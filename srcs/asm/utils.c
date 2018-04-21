@@ -6,11 +6,11 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:15:31 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/19 15:11:33 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/21 17:33:07 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "asm.h"
 
 int		is_empty_char(int c)
 {
@@ -20,14 +20,12 @@ int		is_empty_char(int c)
 	return (0);
 }
 
-int		line_is_comment(char *str)
+int		is_reg(t_token *token)
 {
-	int	i;
+	int	reg_nb;
 
-	i = 0;
-	while (is_empty_char(str[i]))
-		i++;
-	if (str[i] != '#' && str[i] != ';')
+	reg_nb = ft_atoi(token->str + 1);
+	if (reg_nb > 16)
 		return (1);
 	return (0);
 }
@@ -47,4 +45,30 @@ int		line_is_empty(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int		line_is_comment(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (is_empty_char(str[i]))
+		i++;
+	if (str[i] != '#' && str[i] != ';')
+		return (1);
+	return (0);
+}
+
+int		is_label(char *str, int label_type)
+{
+	int	i;
+
+	i = (label_type == 1) ? 1 : 2;
+	while (str[i])
+	{
+		if (!ft_strchr("abcdefghijklmnopqrstuvwxyz_0123456789", str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }

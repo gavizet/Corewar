@@ -1,33 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 14:58:00 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 14:29:31 by gavizet          ###   ########.fr       */
+/*   Created: 2018/04/21 17:17:25 by gavizet           #+#    #+#             */
+/*   Updated: 2018/04/21 18:26:49 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+int		str_isdigit(char *str)
 {
-	char	*cpy;
-	size_t	i;
+	int	i;
 
-	if (!s || !*s)
-		return (NULL);
 	i = 0;
-	if (!(cpy = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len)
-	{
-		cpy[i] = s[start];
+	if (!str || !*str)
+		return (-1);
+	if (str[i] == '-')
 		i++;
-		start++;
+	while (str[i])
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return (-1);
+		i++;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	return (1);
+}
+
+int		is_valid_instr(char *instr, t_line *line)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16)
+	{
+		if ((ft_strcmp(instr, OP_TAB(i).name)) == 0)
+		{
+			line->op = i;
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }

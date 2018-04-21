@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/19 16:59:16 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:41:32 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,79 +18,106 @@
 
 extern t_op			g_op_tab[17];
 
-# define MAX_TOKEN 7
-# define COMM_CHAR #
-# define REGISTER_CHAR r
-# define END_COMM_CHAR ;
-# define LABEL_LEN 2
-# define OP_TAB(x)			g_op_tab[(x)]
+# define MAX_TOKEN				7
+# define COMM_CHAR				'#'
+# define REGISTER_CHAR			'r'
+# define END_COMM_CHAR			';'
+# define LABEL_LEN				2
+# define OP_TAB(x)				g_op_tab[(x)]
 
 typedef enum		e_token_type
 {
 	DONT_KNOW = 0,
-	LINE_TYPE_NAME, // name
-	LINE_TYPE_COMMENT, // comment
-	LINE_TYPE_LABEL, // label
-	LINE_TYPE_INSTRU, // instruction
-	STRING, // chaine de caractere representant une instruction
-	REGISTER, // pareil
-	DIRECT, // pareil++
-	INDIRECT, // pareil++ numero 2
-	ADR_LABEL // adresse de ton label
+	LINE_TYPE_NAME,
+	LINE_TYPE_COMMENT,
+	LINE_TYPE_LABEL,
+	LINE_TYPE_INSTRU,
+	INSTRUCTION,
+	REGISTER,
+	DIRECT,
+	INDIRECT,
+	LABEL,
+	ADR_LABEL
 }					t_token_type;
 
 typedef struct		s_asm
 {
-	int				line_nb; // Nombre de ligne dans le fichier
-	char			*exec_name; // Nom de l'executable
-	t_list			*lines; // Contient toutes les lignes du fichier
-	t_header		header; // Contient tout notre header
+	int				line_nb;
+	char			*exec_name;
+	t_list			*lines;
+	t_header		header;
 }					t_asm;
 
 typedef struct		s_token
 {
-	t_op 			*instr; // Tableau d'instrction dans op.c
-	char			*str; // Chaine correspondant au token
-	int				value; // Valeur du token;
-	t_token_type	type; // Type du token
+	char			*str;
+	int				value;
+	t_token_type	type;
 }					t_token;
 
 typedef struct		s_line
 {
-	int				len_to_load; // Longueur de la ligne en bytecode
-	t_list			*tokens; // Liste des tokens de cette ligne. Stock d'une structure token dans chaque maillon
-	int				got_label; // Stock la position du label dans la ligne
-	int				nb_arg; // Nombre d'arguments dans la ligne
-	char			*str; // Ligne en entier une fois qu'elle a ete strstrim
-	char			*to_load; // Ligne en entier
+	int				len_to_load;
+	t_list			*tokens;
+	int				got_label;
+	int				nb_arg;
+	char			*str;
+	char			*to_load;
 	int				line_nb;
 	int				nb_token;
-	t_token_type	type; // Type de la ligne
+	int				op;
+	t_token_type	type;
 }					t_line;
 
+/*
+** utils.c
+*/
 
-// utils.c
+int					is_empty_char(int n);
+int					is_reg(t_token *token);
+int					line_is_empty(char *str);
+int					line_is_comment(char *str);
+int					is_label(char *str, int label_type);
 
-int		is_empty_char(int n);
-int		line_is_empty(char *str);
-int		line_is_comment(char *str);
+/*
+** utils2.c
+*/
 
-// error.c
+int					str_isdigit(char *str);
+int					is_valid_instr(char *instr, t_line *line);
 
-void	error(char *error);
+/*
+** error.c
+*/
 
-// init_structs.c
+void				error(char *error);
 
-void	init_file(t_asm *file);
-//int		init_token(t_line *line);
-int		init_line(t_asm *file, int line_type, char *str, int line_nb);
+/*
+** init_structs.c
+*/
 
-// stock_file.c
+void				init_file(t_asm *file);
+int					init_token(t_line *line, char *tok);
+int					init_line(t_asm *file, int line_type, char *str,
+					int line_nb);
 
-int		stock_file(t_asm *file, int fd);
+/*
+** stock_file.c
+*/
 
-// parse_file.c
+int					stock_file(t_asm *file, int fd);
 
-int		parse_file(t_asm *file);
+/*
+** parse_file.c
+*/
+
+int					parse_file(t_asm *file);
+
+/*
+** parse_token.c
+*/
+
+int					valid_params(t_line *line);
+int					parse_token(t_token *token, t_line *line);
 
 #endif

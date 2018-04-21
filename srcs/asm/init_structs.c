@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/19 16:04:31 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:42:52 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		init_line(t_asm *file, int line_type, char *str, int line_nb)
 	t_line *line;
 
 	if (!str || !(str))
-		return (1);
+		return (0);
 	if (!(line = (t_line*)malloc(sizeof(t_line))))
 		return (-1);
 	line->str = ft_strtrim(str);
@@ -46,9 +46,23 @@ int		init_line(t_asm *file, int line_type, char *str, int line_nb)
 	free(line);
 	return (1);
 }
-/*
-int		init_token(t_line *line)
-{
 
+int		init_token(t_line *line, char *tok)
+{
+	t_token *token;
+
+	if (!(token = (t_token*)malloc(sizeof(t_token))))
+		return (-1);
+	token->value = 0;
+	token->type = DONT_KNOW;
+	token->str = ft_strdup(tok);
+	if (parse_token(token, line))
+	{
+		free(token);
+		return (1);
+	}
+	ft_printf(" |%s|", token->str);
+	ft_lstaddback(&(line->tokens), ft_lstnew((void*)token, sizeof(t_token)));
+	free(token);
+	return (0);
 }
-*/

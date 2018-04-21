@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:09 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/15 20:13:02 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/21 18:42:20 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			get_exe(t_asm *file, char *file_name)
 {
-	int 	len;
+	int		len;
 	char	*str;
 
 	len = ft_strlen(file_name);
@@ -25,9 +25,9 @@ int			get_exe(t_asm *file, char *file_name)
 		else
 			str = ft_strsub(file_name, 0, len - 2);
 		file->exec_name = ft_strcat(str, ".cor");
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int			main(int ac, char **av)
@@ -38,13 +38,13 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		error("usage : ./asm [champion.s]");
 	init_file(&file);
-	if (!get_exe(&file, av[1]))
+	if (get_exe(&file, av[1]))
 		error("Can't read source file");
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		error("Failed to open source file");
-	if (!stock_file(&file, fd))
+	if (stock_file(&file, fd))
 		error("Stock_file failed");
-	if (!parse_file(&file))
+	if (parse_file(&file))
 		error("Parse_file failed");
 	/*if (file->exec_name != NULL)
 		load_file(&file);

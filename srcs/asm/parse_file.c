@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 18:58:41 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 18:44:13 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/22 20:21:23 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		parse_instru(t_line *line)
 {
 	int		i;
 	int		len;
-	char	*token;
 
 	i = 0;
 	len = 0;
@@ -79,15 +78,14 @@ int		parse_instru(t_line *line)
 		len = i;
 		while (line->str[len] && !is_empty_char((line->str)[len]) && (line->str)[len] != ',')
 			len++;
-		token = ft_strsub(line->str, i, len - i);
-		if (init_token(line, token))
+		if (init_token(line, i, len))
 			return (1);
 		i = len + 1;
 		if (!line->str[i - 1])
 			return (0);
 		line->nb_token++;
 	}
-	return (valid_params(line) ? 1 : 0);
+	return (0);
 }
 
 int		parse_file(t_asm *file)
@@ -99,7 +97,6 @@ int		parse_file(t_asm *file)
 	lines = file->lines;
 	while (lines)
 	{
-		ft_printf("LINE %d |%s|\n", ((t_line *)(lines->content))->line_nb, ((t_line *)(lines->content))->str);
 		if (!(file->header.comment[0]) && parse == 1)
 		{
 			if (parse_comment(file, (t_line *)(lines->content)))
@@ -115,11 +112,12 @@ int		parse_file(t_asm *file)
 		if (((t_line *)(lines->content))->type == LINE_TYPE_INSTRU)
 		{
 			ft_printf("TOKENS ");
-			if (parse_instru((t_line *)(lines->content)))
+			if (parse_instru((t_line *)(lines->content)) || valid_params((t_line *)(lines->content)))
 				return (1);
-			ft_printf("		| nb_tokens == [%d]", ((t_line*)(lines->content))->nb_token);
+			ft_printf("| nb_tokens == [%d]", ((t_line*)(lines->content))->nb_token);
 			ft_printf("\n");
 		}
+		ft_printf("LINE %d |%s|\n", ((t_line *)(lines->content))->line_nb, ((t_line *)(lines->content))->str);
 		lines = lines->next;
 	}
 	return (0);

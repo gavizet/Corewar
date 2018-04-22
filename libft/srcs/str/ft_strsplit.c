@@ -6,104 +6,74 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 19:57:40 by gavizet           #+#    #+#             */
-/*   Updated: 2017/05/16 12:45:01 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/22 17:50:06 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	len_tab(char *s, char c)
+int	ft_words(const char *str, char c)
 {
-	int		i;
+	int wds;
 
-	i = 0;
-	while (s[i] && s[i] != c)
+	if (!(*str))
+		return (0);
+	while (*str == c)
+	{
+		str++;
+		if (*str == '\0')
+			return (0);
+	}
+	wds = 1;
+	while (*str != '\0')
+	{
+		if (*str == c)
+		{
+			while (*(str + 1) == c)
+				str++;
+			wds++;
+		}
+		str++;
+	}
+	if (*(str - 1) == c)
+		wds--;
+	return (wds);
+}
+
+static int		ft_wordlen(const char *str, char c)
+{
+	int i;
+
+	i = 1;
+	while (*str != c && *str != '\0')
+	{
+		str++;
 		i++;
+	}
 	return (i);
 }
 
-static int	nb_tab(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
+	int		wds;
 	int		i;
-	int		j;
+	char	**supercool;
 
+	if (!(s))
+		exit(EXIT_FAILURE);
+	wds = ft_words(s, c);
+	if (!(supercool = (char**)malloc(sizeof(char*) * (wds + 1))))
+		exit(EXIT_FAILURE);
 	i = 0;
-	j = 0;
-	if (!(s[i] == c))
-		j = 1;
-	while (s[i])
+	while (i < wds)
 	{
-		while (s[i] == c)
-		{
-			if (s[i + 1] != c && s[i + 1] != '\0')
-				j++;
-			i++;
-		}
+		while (*s == c)
+			s++;
+		supercool[i] = ft_strsub(s, 0, (ft_wordlen(s, c) - 1));
 		i++;
+		while (*s != c && *s != '\0')
+			s++;
 	}
-	return (j);
-}
-
-static char	*copy_tab(char *dest, char const *src, int s, char c)
-{
-	int		d;
-
-	d = 0;
-	if (!src[s])
-		return (NULL);
-	while (src[s])
-	{
-		if (src[s] != c && src[s] != '\0')
-			dest[d] = src[s];
-		else
-			return (dest);
-		d++;
-		s++;
-	}
-	dest[d] = '\0';
-	return (dest);
-}
-
-static char	*find_tab(char const *src, char c, int n_mot)
-{
-	char	*cpy;
-	int		i;
-	int		count;
-
-	i = 0;
-	count = 0;
-	if (!(cpy = (char*)malloc(sizeof(char) * (len_tab((char*)src, c) + 1))))
-		return (NULL);
-	while (src[i] && src[i] == c)
-		i++;
-	while (count < n_mot)
-	{
-		while (src[i] && src[i] != c)
-			i++;
-		while (src[i] == c && src[i])
-			i++;
-		count++;
-	}
-	return (copy_tab(cpy, src, i, c));
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**tab;
-	int		nb_t;
-	int		count;
-
-	if (!s)
-		return (NULL);
-	count = 0;
-	nb_t = nb_tab(s, c);
-	if (!(tab = (char**)malloc(sizeof(char*) * (nb_t + 1))))
-		return (NULL);
-	while (count < nb_t)
-	{
-		tab[count] = find_tab(s, c, count);
-		count++;
-	}
-	tab[count] = NULL;
-	return (tab);
+	supercool[i] = 0;
+	return (supercool);
 }

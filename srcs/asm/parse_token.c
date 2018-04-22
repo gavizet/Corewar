@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:50:54 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 18:44:33 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/22 20:48:19 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,31 @@
 
 int		valid_params(t_line *line)
 {
+	int		nb_param;
+	int		bin_arg;
 	t_list	*tokens;
 
+	nb_param = 0;
 	tokens = line->tokens;
-	if ((line->nb_token != g_op_tab[line->op - 1].nb_param) || !tokens->next)
+	if ((line->nb_token != g_op_tab[line->op].nb_param) || !tokens->next)
 		return (1);
 	tokens = tokens->next;
-	while (tokens)
+	ft_printf("\nARGS    |      ");
+	while (tokens || nb_param < g_op_tab[line->op].nb_param)
 	{
-		// CHECK QUE LE TYPE DE TOKEN EST BIEN UN PARAMETRE QUI CORRESPOND A
-		// CETTE INSTRUCTION
+		if (((t_token *)(tokens->content))->type == LABEL)
+			bin_arg = 2;
+		else
+			bin_arg = ((t_token *)(tokens->content))->type - 5;
+		if (((t_token *)(tokens->content))->type == ADR_LABEL - 5)
+			bin_arg = 4;
+		ft_printf("[%d]   ", bin_arg);
+		if (bin_arg & ~(g_op_tab[line->op].param[nb_param]))
+		{
+			ft_printf("\nDEBUG\n");
+			return (1);
+		}
+		nb_param += 1;
 		tokens = tokens->next;
 	}
 	return (0);

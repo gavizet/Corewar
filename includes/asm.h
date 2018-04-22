@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 18:41:32 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/22 20:54:53 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ typedef enum		e_token_type
 	INSTRUCTION,
 	REGISTER,
 	DIRECT,
-	INDIRECT,
+	INDIRECT = 9,
 	LABEL,
-	ADR_LABEL
+	ADR_LABEL = 16
 }					t_token_type;
 
 typedef struct		s_asm
@@ -57,14 +57,14 @@ typedef struct		s_token
 
 typedef struct		s_line
 {
-	int				len_to_load;
 	t_list			*tokens;
-	int				got_label;
-	int				nb_arg;
 	char			*str;
-	char			*to_load;
+	unsigned char	to_load[11];
+	int				nb_arg;
+	int				got_label;
 	int				line_nb;
 	int				nb_token;
+	int				len_to_load;
 	int				op;
 	t_token_type	type;
 }					t_line;
@@ -97,7 +97,7 @@ void				error(char *error);
 */
 
 void				init_file(t_asm *file);
-int					init_token(t_line *line, char *tok);
+int					init_token(t_line *line, int start, int end);
 int					init_line(t_asm *file, int line_type, char *str,
 					int line_nb);
 
@@ -119,5 +119,17 @@ int					parse_file(t_asm *file);
 
 int					valid_params(t_line *line);
 int					parse_token(t_token *token, t_line *line);
+
+/*
+** load_file.c
+*/
+
+int					load_file(t_asm *file);
+
+/*
+** get_bytecode_data.c
+*/
+
+int					get_bytecode_data(t_asm *file);
 
 #endif

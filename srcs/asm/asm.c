@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:09 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 18:42:20 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/22 19:06:56 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int			main(int ac, char **av)
 		error("Stock_file failed");
 	if (parse_file(&file))
 		error("Parse_file failed");
-	/*if (file->exec_name != NULL)
-		load_file(&file);
-	free_all();
-	*/
+	if (load_file(&file))
+		error("Load_file failed");
+	//free_all();
 	return (0);
 }

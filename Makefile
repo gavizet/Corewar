@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/21 17:25:06 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/22 18:07:45 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ORANGE			= \033[38;5;202m
 
 #-------------------------------| COMPILATION |--------------------------------#
 CC				= gcc
-FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -Wall -Wextra -Werror -fsanitize=address -g
 MAKE			= make -C
 #------------------------------------------------------------------------------#
 
@@ -56,6 +56,8 @@ ASM_FILES		= asm.c\
 				  parse_token.c\
 				  utils.c\
 				  utils2.c\
+				  load_file.c\
+				  get_bytecode_data.c\
 				  error.c
 
 ASM_HEAD_FILES	= asm.h\

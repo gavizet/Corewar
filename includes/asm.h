@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 17:03:50 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 18:01:39 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,26 @@ int					load_file(t_asm *file);
 ** get_bytecode_data.c
 */
 
-int					get_bytecode_data(t_asm *file);
+int					get_to_load_data(t_asm *file);
 
-int					get_bytelen(t_line *line);
+/*
+** label.c
+*/
+
+int					check_label(t_asm *file, t_list *line_list,
+						t_line *lab_line, t_token *token);
+
+/*
+** stock_token_in_load.c
+*/
+
+int					stock_token_in_to_load(t_line *line, t_token *token,
+											size_t *octet);
+
+/*
+** get_len_to_load.c
+*/
+
+int					get_len_to_load(t_line *line);
 
 #endif

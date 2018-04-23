@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 18:58:41 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 16:03:53 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 21:32:48 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		parse_prog_name(t_asm *file, t_line *name)
 	if ((name->str)[i++] != '"')
 		return (1);
 	end = i;
-	while ((name->str)[end] != '"')
+	while (name->str && name->str[end] && (name->str)[end] != '"')
 		end++;
 	if (((name->str)[end] != '"') || end - i > PROG_NAME_LENGTH ||
 			(name->str)[end + 1])
@@ -33,8 +33,6 @@ int		parse_prog_name(t_asm *file, t_line *name)
 	ft_strncpy(file->header.prog_name, name->str + i, end - i);
 	name->type = LINE_TYPE_NAME;
 	file->header.magic = COREWAR_EXEC_MAGIC;
-	//ft_printf("file->header.prog_name == [%s]\n", file->header.prog_name);
-	//ft_printf("file->header.magic == [%d]\n", file->header.magic);
 	return (0);
 }
 
@@ -51,14 +49,13 @@ int		parse_comment(t_asm *file, t_line *comment)
 	if ((comment->str)[i++] != '"')
 		return (1);
 	end = i;
-	while ((comment->str)[end] != '"')
+	while (comment->str && comment->str[end] && (comment->str)[end] != '"')
 		end++;
 	if (((comment->str)[end] != '"') || end - i > COMMENT_LENGTH ||
 			(comment->str)[end + 1])
 		return (1);
 	ft_strncpy(file->header.comment, comment->str + i, end - i);
 	comment->type = LINE_TYPE_COMMENT;
-	//ft_printf("file->header.comment == [%s]\n", file->header.comment);
 	return (0);
 }
 
@@ -76,7 +73,8 @@ int		parse_instru(t_line *line)
 		while (line->str[i] && is_empty_char(line->str[i]))
 			i++;
 		len = i;
-		while (line->str[len] && !is_empty_char((line->str)[len]) && (line->str)[len] != ',')
+		while (line->str[len] && !is_empty_char((line->str)[len]) &&
+				(line->str)[len] != ',')
 			len++;
 		if (init_token(line, i, len))
 			return (1);
@@ -111,15 +109,12 @@ int		parse_file(t_asm *file)
 		}
 		if (((t_line *)(lines->content))->type == LINE_TYPE_INSTRU)
 		{
-			//ft_printf("TOKENS ");
-			if (parse_instru((t_line *)(lines->content)) || valid_params((t_line *)(lines->content)))
+			if (parse_instru((t_line *)(lines->content)) ||
+					valid_params((t_line *)(lines->content)))
 				return (1);
-			if (get_bytelen((t_line *)(lines->content)))
+			if (get_len_to_load((t_line *)(lines->content)))
 				return (1);
-			//ft_printf("| nb_tokens == [%d]", ((t_line*)(lines->content))->nb_token);
-			//ft_printf("\n");
 		}
-		//ft_printf("LINE %d |%s|\n", ((t_line *)(lines->content))->line_nb, ((t_line *)(lines->content))->str);
 		lines = lines->next;
 	}
 	return (0);

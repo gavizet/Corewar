@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 16:25:48 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 21:16:56 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		init_line(t_asm *file, int line_type, char *str, int line_nb)
 	line->nb_token = 0;
 	ft_bzero(line->to_load, 11);
 	line->op = 0;
-	//ft_printf("line[%d] | type = [%d] | [%s]\n", line->line_nb, line->type, line->str);
 	if (line->str && *(line->str))
 		ft_lstaddback(&(file->lines), ft_lstnew((void*)line, sizeof(t_line)));
 	free(line);
@@ -65,7 +64,6 @@ int		init_token(t_line *line, int start, int end)
 		free(token);
 		return (1);
 	}
-	//ft_printf(" |%s|", token->str);
 	ft_lstaddback(&(line->tokens), ft_lstnew((void*)token, sizeof(t_token)));
 	free(token);
 	return (0);

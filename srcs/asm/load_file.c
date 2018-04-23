@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:08:25 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 17:03:52 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 21:31:53 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned int	switch_endianness(unsigned int bytes)
 			(((bytes << 16) >> 24) << 16) + (bytes << 24));
 }
 
-int		get_prog_size(t_asm *file)
+int				get_prog_size(t_asm *file)
 {
 	t_list	*size;
 	int		prog_size;
@@ -35,12 +35,12 @@ int		get_prog_size(t_asm *file)
 	return (prog_size);
 }
 
-int		load_file(t_asm *file)
+int				load_file(t_asm *file)
 {
-	int	fd;
+	int		fd;
 	t_list	*lines;
 
-	if (get_bytecode_data(file))
+	if (get_to_load_data(file))
 		return (1);
 	if (!(file->header.prog_size = get_prog_size(file)))
 		return (1);
@@ -53,7 +53,7 @@ int		load_file(t_asm *file)
 	while (lines)
 	{
 		if (((t_line*)(lines->content))->type == LINE_TYPE_INSTRU)
-			write (fd, ((t_line*)(lines->content))->to_load,
+			write(fd, ((t_line*)(lines->content))->to_load,
 					((t_line*)(lines->content))->len_to_load);
 		lines = lines->next;
 	}

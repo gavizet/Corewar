@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/22 18:07:45 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/23 18:17:06 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,17 +48,20 @@ HEADERS_PATH	= includes/
 #------------------------------------------------------------------------------#
 
 #--------------------------------| ASM FILES |---------------------------------#
-ASM_FILES		= asm.c\
-				  op.c\
-				  init_structs.c\
-				  stock_file.c\
-				  parse_file.c\
-				  parse_token.c\
-				  utils.c\
-				  utils2.c\
-				  load_file.c\
-				  get_bytecode_data.c\
-				  error.c
+ASM_FILES		= op.c					\
+				  asm.c					\
+				  label.c				\
+				  error.c				\
+				  utils.c				\
+				  utils2.c				\
+				  load_file.c			\
+				  parse_file.c			\
+				  stock_file.c			\
+				  parse_token.c			\
+				  init_structs.c		\
+				  get_len_to_load.c		\
+				  get_to_load_data.c	\
+				  stock_token_in_load.c
 
 ASM_HEAD_FILES	= asm.h\
 #------------------------------------------------------------------------------#

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:09 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 16:06:16 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 21:42:27 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 int			get_exe(t_asm *file, char *file_name)
 {
-	int		len;
-	char	*str;
+	char	*search;
+	char	*final;
 
-	len = ft_strlen(file_name);
-	if (file_name[len - 2] == '.' && file_name[len - 1] == 's')
-	{
-		if ((str = ft_strrchr(file_name, '/')))
-			str = ft_strsub(str, 1, ft_strlen(str) - 3);
-		else
-			str = ft_strsub(file_name, 0, len - 2);
-		file->exec_name = ft_strcat(str, ".cor");
-		return (0);
-	}
-	return (1);
+	search = ft_strrchr(file_name, '.');
+	if (!search)
+		return (1);
+	if (ft_strcmp(search, ".s"))
+		error("Erreur, format c monfi chier point S batar\n");
+	final = ft_strsub(file_name, 0, ft_strlen(file_name) - ft_strlen(search));
+	file->exec_name = ft_strcat(final, ".cor");
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -40,7 +37,7 @@ int			main(int ac, char **av)
 	init_file(&file);
 	if (get_exe(&file, av[1]))
 		error("Can't read source file");
-	if (!(fd = open(av[1], O_RDONLY)))
+	if ((fd = open(av[1], O_RDONLY)) == -1)
 		error("Failed to open source file");
 	if (stock_file(&file, fd))
 		error("Stock_file failed");
@@ -49,6 +46,5 @@ int			main(int ac, char **av)
 	if (load_file(&file))
 		error("Load_file failed");
 	ft_printf("Writing output program to %s\n", file.exec_name);
-	//free_all();
 	return (0);
 }

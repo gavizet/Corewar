@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:09 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/22 19:06:56 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 16:06:16 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			main(int ac, char **av)
 	init_file(&file);
 	if (get_exe(&file, av[1]))
 		error("Can't read source file");
-	if ((fd = open(av[1], O_RDONLY)) == -1)
+	if (!(fd = open(av[1], O_RDONLY)))
 		error("Failed to open source file");
 	if (stock_file(&file, fd))
 		error("Stock_file failed");
@@ -48,6 +48,7 @@ int			main(int ac, char **av)
 		error("Parse_file failed");
 	if (load_file(&file))
 		error("Load_file failed");
+	ft_printf("Writing output program to %s\n", file.exec_name);
 	//free_all();
 	return (0);
 }

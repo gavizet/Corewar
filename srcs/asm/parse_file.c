@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 18:58:41 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/22 20:21:23 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 16:03:53 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,15 @@ int		parse_file(t_asm *file)
 		}
 		if (((t_line *)(lines->content))->type == LINE_TYPE_INSTRU)
 		{
-			ft_printf("TOKENS ");
+			//ft_printf("TOKENS ");
 			if (parse_instru((t_line *)(lines->content)) || valid_params((t_line *)(lines->content)))
 				return (1);
-			ft_printf("| nb_tokens == [%d]", ((t_line*)(lines->content))->nb_token);
-			ft_printf("\n");
+			if (get_bytelen((t_line *)(lines->content)))
+				return (1);
+			//ft_printf("| nb_tokens == [%d]", ((t_line*)(lines->content))->nb_token);
+			//ft_printf("\n");
 		}
-		ft_printf("LINE %d |%s|\n", ((t_line *)(lines->content))->line_nb, ((t_line *)(lines->content))->str);
+		//ft_printf("LINE %d |%s|\n", ((t_line *)(lines->content))->line_nb, ((t_line *)(lines->content))->str);
 		lines = lines->next;
 	}
 	return (0);

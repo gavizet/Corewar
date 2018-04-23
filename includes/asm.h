@@ -6,13 +6,16 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/22 20:54:53 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 17:03:50 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include "op.h"
 # include "../libft/includes/libft.h"
 
@@ -131,5 +134,7 @@ int					load_file(t_asm *file);
 */
 
 int					get_bytecode_data(t_asm *file);
+
+int					get_bytelen(t_line *line);
 
 #endif

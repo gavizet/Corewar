@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/22 18:31:36 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 16:25:48 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		init_token(t_line *line, int start, int end)
 		free(token);
 		return (1);
 	}
-	ft_printf(" |%s|", token->str);
+	//ft_printf(" |%s|", token->str);
 	ft_lstaddback(&(line->tokens), ft_lstnew((void*)token, sizeof(t_token)));
 	free(token);
 	return (0);

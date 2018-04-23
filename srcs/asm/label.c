@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 17:49:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:30:48 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:12:41 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ int		check_label(t_asm *file, t_list *line_list,
 		}
 		lines = lines->next;
 	}
+	line_error("No corresponding label at line", lab_line->line_nb);
 	return (1);
 }

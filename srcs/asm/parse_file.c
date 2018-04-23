@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 18:58:41 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:32:48 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:16:12 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,22 +98,22 @@ int		parse_file(t_asm *file)
 		if (!(file->header.comment[0]) && parse == 1)
 		{
 			if (parse_comment(file, (t_line *)(lines->content)))
-				return (1);
+				error("Error during parse_comment");
 			parse = 2;
 		}
 		if (!(file->header.prog_name[0]) && parse == 0)
 		{
 			if (parse_prog_name(file, (t_line *)(lines->content)))
-				return (1);
+				error("Error during parse_prog_name");
 			parse = 1;
 		}
 		if (((t_line *)(lines->content))->type == LINE_TYPE_INSTRU)
 		{
 			if (parse_instru((t_line *)(lines->content)) ||
-					valid_params((t_line *)(lines->content)))
-				return (1);
-			if (get_len_to_load((t_line *)(lines->content)))
-				return (1);
+					valid_params((t_line *)(lines->content)) ||
+					get_len_to_load((t_line *)(lines->content)))
+				line_error("Error at line",
+							((t_line*)(lines->content))->line_nb);
 		}
 		lines = lines->next;
 	}

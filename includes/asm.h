@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 18:01:39 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 22:49:01 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int					is_valid_instr(char *instr, t_line *line);
 */
 
 void				error(char *error);
+void				line_error(char *error, int line);
 
 /*
 ** init_structs.c

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 11:00:21 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:33:49 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:14:33 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,10 @@ int		stock_line(t_asm *file, char *str, int line_nb)
 		split_line = ft_strsplit(str, LABEL_CHAR);
 		if (!init_line(file, LINE_TYPE_LABEL, split_line[0], line_nb))
 			return (-1);
-		if (!line_is_empty(split_line[1]))
+		if (split_line[1])
 		{
-			if (!init_line(file, LINE_TYPE_INSTRU, split_line[1],
-					line_nb))
-			{
-				free_tab2d(&split_line);
-				return (-1);
-			}
+			free_tab2d(&split_line);
+			return (0);
 		}
 		free_tab2d(&split_line);
 	}
@@ -69,7 +65,7 @@ int		stock_file(t_asm *file, int fd)
 		if (str && *str && !line_is_empty(str) && line_is_comment(str))
 		{
 			if (!stock_line(file, str, line_nb))
-				return (1);
+				line_error("Error at line", line_nb);
 		}
 		ft_strdel(&str);
 		line_nb++;

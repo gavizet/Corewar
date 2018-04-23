@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:31:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:39:14 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:15:50 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int		get_to_load_data(t_asm *file)
 			if (g_op_tab[((t_line*)(code->content))->op].ocp)
 				get_ocp(((t_line*)(code->content)));
 			if (get_params(file, (t_line *)(code->content)))
-				return (1);
+				line_error("Error at line",
+							((t_line*)(code->content))->line_nb);
 		}
 		code = code->next;
 	}

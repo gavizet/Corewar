@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:16:56 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:12:25 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		init_line(t_asm *file, int line_type, char *str, int line_nb)
 	if (!str || !*str)
 		return (0);
 	if (!(line = (t_line*)malloc(sizeof(t_line))))
-		error("malloc failed");
+		error("Wesh l'allocation memoire marche pas frere");
 	line->tokens = NULL;
 	line->line_nb = line_nb;
 	line->len_to_load = 0;

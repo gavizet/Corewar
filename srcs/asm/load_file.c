@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:08:25 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 21:31:53 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/23 23:12:52 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int				load_file(t_asm *file)
 
 	if (get_to_load_data(file))
 		return (1);
-	if (!(file->header.prog_size = get_prog_size(file)))
-		return (1);
-	if (!(fd = open(file->exec_name, O_RDWR | O_CREAT | O_TRUNC, 0666)))
-		return (1);
+	if ((file->header.prog_size = get_prog_size(file)) == 0)
+		error("Error : champion prog size is too big");
+	if ((fd = open(file->exec_name, O_RDWR | O_CREAT | O_TRUNC, 0666)) == -1)
+		error("Error : didn't manage to open .cor file");
 	lines = file->lines;
 	file->header.prog_size = switch_endianness(file->header.prog_size);
 	file->header.magic = switch_endianness(file->header.magic);

@@ -6,12 +6,12 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 11:21:05 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 13:34:42 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:58:09 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMORY_H
-# define MEMORY_H
+#ifndef MEM_H
+# define MEM_H
 
 # include "libft.h"
 

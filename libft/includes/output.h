@@ -6,12 +6,12 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 11:20:58 by gavizet           #+#    #+#             */
-/*   Updated: 2017/06/02 11:23:19 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:59:27 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#ifndef OUTPUT_H
+# define OUTPUT_H
 
 # include "libft.h"
 

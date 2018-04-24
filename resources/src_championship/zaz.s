@@ -6,7 +6,7 @@
 #    By: bguy <bguy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/02 20:48:59 by bguy              #+#    #+#              #
-#    Updated: 2018/04/24 15:37:05 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/24 15:33:28 by gavizet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 .comment	"Ca roxxe du chameau"
 
 entry:
-	sti		r1, :wall, %1
+	sti		r1, wall, %1
 	ld		%0, r16
 	fork	%:shield_init
 	st		r1, 6

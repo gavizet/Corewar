@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 12:15:31 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 23:10:27 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 15:22:55 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		is_label(char *str, int label_type)
 	i = (label_type == 1) ? 1 : 2;
 	while (str[i])
 	{
+		//ft_printf("str[i] == [%c]\n", str[i]);
 		if (!ft_strchr("abcdefghijklmnopqrstuvwxyz_0123456789", str[i]))
 			return (1);
 		i++;

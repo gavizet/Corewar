@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:29:48 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 14:05:27 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:58:57 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 
 # define BUFF_SIZE 16
-
 
 int					ft_islower(int c);
 int					ft_isalpha(int n);

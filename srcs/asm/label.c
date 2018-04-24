@@ -6,11 +6,26 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 17:49:16 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 23:12:41 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 15:02:24 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int		get_label2(t_list *list, t_line *rule_line, t_line *lab_line)
+{
+	int	value;
+
+	value = 0;
+	while (list && (t_line *)(list->content) != lab_line)
+		list = list->next;
+	while (list && (t_line *)(list->content) != rule_line)
+	{
+		value += ((t_line*)(list->content))->len_to_load;
+		list = list->next;
+	}
+	return (value);
+}
 
 int		get_label(t_asm *file, t_list *lines_list,
 					t_line *lab_line, t_line *rule_line)
@@ -32,13 +47,7 @@ int		get_label(t_asm *file, t_list *lines_list,
 	else if (lab_line->line_nb < rule_line->line_nb)
 	{
 		list = file->lines;
-		while (list && (t_line *)(list->content) != lab_line)
-			list = list->next;
-		while (list && (t_line *)(list->content) != rule_line)
-		{
-			value += ((t_line*)(list->content))->len_to_load;
-			list = list->next;
-		}
+		value = get_label2(list, rule_line, lab_line);
 	}
 	return (value);
 }

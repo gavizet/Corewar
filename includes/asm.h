@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 22:49:01 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 15:24:50 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@
 extern t_op			g_op_tab[17];
 
 # define MAX_TOKEN				7
-# define COMM_CHAR				'#'
 # define REGISTER_CHAR			'r'
-# define END_COMM_CHAR			';'
-# define LABEL_LEN				2
 # define OP_TAB(x)				g_op_tab[(x)]
 
 typedef enum		e_token_type
@@ -103,7 +100,7 @@ void				line_error(char *error, int line);
 void				init_file(t_asm *file);
 int					init_token(t_line *line, int start, int end);
 int					init_line(t_asm *file, int line_type, char *str,
-					int line_nb);
+								int line_nb);
 
 /*
 ** stock_file.c
@@ -141,7 +138,7 @@ int					get_to_load_data(t_asm *file);
 */
 
 int					check_label(t_asm *file, t_list *line_list,
-						t_line *lab_line, t_token *token);
+								t_line *lab_line, t_token *token);
 
 /*
 ** stock_token_in_load.c

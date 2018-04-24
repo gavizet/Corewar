@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 13:44:08 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 13:44:54 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:01:09 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,3 @@ int		ft_strisint(char *nbr)
 		return (ft_return(int_min, int_max, 1));
 	return (ft_return(int_min, int_max, 0));
 }
-#include "libft.h"
-
-

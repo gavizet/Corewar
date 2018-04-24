@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/23 23:12:25 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 15:22:42 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,26 @@ int		init_token(t_line *line, int start, int end)
 	t_token *token;
 
 	if (!(token = (t_token*)malloc(sizeof(t_token))))
-		return (-1);
+		return (1);
 	if (!(token->str = (char*)malloc(sizeof(char) * (end - start + 1))))
-		return (-1);
+		return (1);
 	token->value = 0;
 	token->type = DONT_KNOW;
 	ft_strncpy(token->str, &(line->str[start]), end - start);
+	if ((token->str[0] == '%' && token->str[1] == ':') &&
+			(ft_strlen(token->str)) < 4)
+	{
+	//	ft_printf("COUCOU2\n");
+		free(token);
+		return (1);
+	}
+	else if ((token->str[0] == '%' || token->str[0] == 'r' || token->str[0] == ':')
+			&& (ft_strlen(token->str)) < 3)
+	{
+	//	ft_printf("COUCOU\n");
+		free(token);
+		return (1);
+	}
 	token->str[end - start] = 0;
 	if (parse_token(token, line))
 	{

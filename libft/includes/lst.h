@@ -6,12 +6,12 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 11:20:22 by gavizet           #+#    #+#             */
-/*   Updated: 2017/06/08 14:36:57 by argirin          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:58:49 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINKED_LIST_H
-# define LINKED_LIST_H
+#ifndef LST_H
+# define LST_H
 
 # include "libft.h"
 
@@ -19,7 +19,7 @@ typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
-	struct	s_list	*next;
+	struct s_list	*next;
 }					t_list;
 
 void				ft_lstrev(t_list **liste);

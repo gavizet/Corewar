@@ -6,18 +6,17 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 11:21:29 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 13:51:01 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:59:12 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRING_H
-# define STRING_H
+#ifndef STR_H
+# define STR_H
 
 # include "libft.h"
 # include <stdlib.h>
 # include <stdarg.h>
 # include <string.h>
-
 
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);

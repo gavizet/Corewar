@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 15:46:33 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/21 18:12:07 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 13:37:03 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,6 @@ int					verbose_cycle(t_vm *vm);
 int					verbose_operations(t_vm *vm);
 int					verbose_deaths(t_vm *vm);
 int					verbose_pc(t_vm *vm);
-
-
 
 void				ft_print_ind(t_vm *vm, t_process *process, int i);
 void				ft_print_pc(t_vm *vm, t_process *process);

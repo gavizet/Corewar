@@ -6,7 +6,7 @@
 /*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 19:46:07 by rlangeoi          #+#    #+#             */
-/*   Updated: 2018/04/15 19:54:41 by rlangeoi         ###   ########.fr       */
+/*   Updated: 2018/04/24 18:29:39 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_lstrm_at(t_list **alst, int nb)
 {
 	t_list	*cur;
 	t_list	*prev;
-	int i;
+	int		i;
 
 	i = 0;
 	cur = (*alst);

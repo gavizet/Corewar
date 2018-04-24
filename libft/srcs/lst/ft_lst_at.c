@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs.c                                     :+:      :+:    :+:   */
+/*   ft_lst_at.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/14 13:36:30 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/14 13:42:41 by gavizet          ###   ########.fr       */
+/*   Created: 2016/11/14 19:35:40 by rlangeoi          #+#    #+#             */
+/*   Updated: 2016/11/14 19:35:43 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclide "asm.h"
+#include "libft.h"
 
-void	init_file(t_asm *file)
+t_list	*ft_lst_at(t_list *alst, unsigned int n)
 {
-	ft_bzero(file->header.prog_name, );
-	ft_bzero(file->header.comment)
-}
+	unsigned int i;
 
-void	init_token(t_token *token)
-{
-
-}
-
-void	init_line(t_line *line)
-{
-
+	i = 0;
+	if (n == 0)
+		return (alst);
+	while (i < n && alst->next)
+	{
+		alst = alst->next;
+		i++;
+	}
+	if (i == n)
+		return (alst);
+	else
+		return (NULL);
 }

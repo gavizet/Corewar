@@ -14,16 +14,16 @@
 
 int		valid_params(t_line *line)
 {
-	int		nb_param;
+	int		ac;
 	int		bin_arg;
 	t_list	*tokens;
 
-	nb_param = 0;
+	ac = 0;
 	tokens = line->tokens;
-	if ((line->nb_token != g_op_tab[line->op].nb_param) || !tokens->next)
+	if ((line->nb_token != g_op_tab[line->op].ac) || !tokens->next)
 		return (1);
 	tokens = tokens->next;
-	while (tokens || nb_param < g_op_tab[line->op].nb_param)
+	while (tokens || ac < g_op_tab[line->op].ac)
 	{
 		if (((t_token *)(tokens->content))->type == LABEL)
 			bin_arg = 2;
@@ -31,9 +31,9 @@ int		valid_params(t_line *line)
 			bin_arg = ((t_token *)(tokens->content))->type - 5;
 		if (bin_arg == 11)
 			bin_arg = 4;
-		if (bin_arg & ~(g_op_tab[line->op].param[nb_param]))
+		if (bin_arg & ~(g_op_tab[line->op].av[ac]))
 			return (1);
-		nb_param += 1;
+		ac += 1;
 		tokens = tokens->next;
 	}
 	return (0);

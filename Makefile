@@ -6,7 +6,7 @@
 #    By: gavizet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 13:15:57 by gavizet           #+#    #+#              #
-#    Updated: 2018/04/24 14:24:19 by gavizet          ###   ########.fr        #
+#    Updated: 2018/04/24 17:15:36 by rlangeoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,23 +68,18 @@ ASM_HEAD_FILES	= asm.h\
 
 #--------------------------------| VM FILES |----------------------------------#
 VM_FILES		=	op.c \
-					vm.c \
-					vm_parse_process.c \
-					debug_vm.c \
-					vm_treat_args.c \
-					prepare_memory.c \
-					vm_launch.c \
-					vm_handle_process.c \
-					vm_handle_process2.c \
-					vm_virtual_foam_bat.c \
-					vm_check_champ.c \
-					killemall.c \
-					load.c \
+					main.c \
 					store.c \
 					init_vm.c \
-					ncurses.c \
-					ncurses2.c \
-					ncurses3.c	\
+					utils.c\
+					check_data.c\
+					create_processes.c\
+					load_processes.c\
+					error.c\
+					parse_champs.c\
+					parsing.c\
+					process.c\
+					vm_loop.c\
 					add.c \
 					sub.c \
 					ld.c \
@@ -107,7 +102,6 @@ VM_FILES		=	op.c \
 
 VM_HEAD_FILE	= op.h\
 				  vm.h\
-				  colors.h\
 #------------------------------------------------------------------------------#
 
 #------------------------------| CREATE SOURCE |-------------------------------#

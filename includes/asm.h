@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 15:24:50 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:03:47 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include <fcntl.h>
 # include "op.h"
 # include "../libft/includes/libft.h"
-
-extern t_op			g_op_tab[17];
-
-# define MAX_TOKEN				7
-# define REGISTER_CHAR			'r'
-# define OP_TAB(x)				g_op_tab[(x)]
 
 typedef enum		e_token_type
 {
@@ -68,6 +62,12 @@ typedef struct		s_line
 	int				op;
 	t_token_type	type;
 }					t_line;
+
+extern t_op			g_op_tab[17];
+
+# define MAX_TOKEN				7
+# define REGISTER_CHAR			'r'
+# define OP_TAB(x)				g_op_tab[(x)]
 
 /*
 ** utils.c

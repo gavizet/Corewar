@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 18:58:41 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 15:22:28 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 16:57:22 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		parse_instru(t_line *line)
 
 	i = 0;
 	len = 0;
-	//ft_printf("DEBUG 1\n");
 	while (line->nb_token < MAX_TOKEN)
 	{
 		if (line->nb_token == 6)
@@ -80,12 +79,10 @@ int		parse_instru(t_line *line)
 		if (init_token(line, i, len))
 			return (1);
 		i = len + 1;
-		//ft_printf("DEBUG 2\n");
 		if (!line->str[i - 1])
 			return (0);
 		line->nb_token++;
 	}
-	//ft_printf("DEBUG 3\n");
 	return (0);
 }
 
@@ -93,7 +90,6 @@ int		parse_file_instru(t_line *line)
 {
 	if (parse_instru(line) || valid_params(line) || get_len_to_load(line))
 	{
-	//	ft_printf("YOLOOOOOOOOOOOO\n");
 		line_error("Error at line", line->line_nb);
 		return (1);
 	}

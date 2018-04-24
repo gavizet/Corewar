@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:50:54 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 15:37:30 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:03:00 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,15 @@ int		valid_params(t_line *line)
 	tokens = line->tokens;
 	if ((line->nb_token != g_op_tab[line->op].nb_param) || !tokens->next)
 		return (1);
-	//ft_printf("VALID PARAM 1\n");
 	tokens = tokens->next;
 	while (tokens || nb_param < g_op_tab[line->op].nb_param)
 	{
-
-		//ft_printf("label->type == [%d]\n", ((t_token *)(tokens->content))->type);
 		if (((t_token *)(tokens->content))->type == LABEL)
 			bin_arg = 2;
 		else
 			bin_arg = ((t_token *)(tokens->content))->type - 5;
-		//ft_printf("bin arg == [%d]\n", bin_arg);
 		if (bin_arg == 11)
 			bin_arg = 4;
-		//ft_printf("bin arg == [%d]\n", bin_arg);
 		if (bin_arg & ~(g_op_tab[line->op].param[nb_param]))
 			return (1);
 		nb_param += 1;
@@ -60,7 +55,7 @@ int		parse_token2(t_token *token)
 				return (1);
 		}
 	}
-	else if (str_isdigit(token->str))
+	else if ((str_isdigit(token->str)) == 1)
 		token->type = INDIRECT;
 	else
 		return (1);
@@ -80,16 +75,12 @@ int		parse_token(t_token *token, t_line *line)
 	else if (token->str[0] == LABEL_CHAR)
 	{
 		token->type = ADR_LABEL;
-		//ft_printf("COUCOU\n");
 		if (is_label(token->str, 1))
 		{
-		//	ft_printf("FUCK\n");
 			return (1);
 		}
 	}
 	else if (parse_token2(token))
-		return (1);
-	else
 		return (1);
 	return (0);
 }

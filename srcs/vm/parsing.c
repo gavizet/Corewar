@@ -6,7 +6,7 @@
 /*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 17:40:05 by rlangeoi          #+#    #+#             */
-/*   Updated: 2018/04/24 17:24:00 by rlangeoi         ###   ########.fr       */
+/*   Updated: 2018/04/24 17:53:29 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_parse_dump(char *arg)
 
 	res = 0;
 	if (arg)
-		if (ft_str_isdigit(arg))
+		if (ft_isdigitstr(arg))
 			if ((res = ft_atoi(arg)) >= 0)
 				return (ft_atoi(arg));
 	if (res < 0)
@@ -71,7 +71,7 @@ static int	ft_parse_pnum(char **arg, t_vm *data, int i)
 
 	if (arg[i] && arg[i + 1])
 	{
-		if (ft_str_isdigit(arg[i]))
+		if (ft_isdigitstr(arg[i]))
 		{
 			if (((res = ft_atoi(arg[i])) <= MAX_PLAYERS && res > 0))
 			{

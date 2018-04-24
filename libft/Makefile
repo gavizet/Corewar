@@ -88,7 +88,7 @@ SRCS_FILES	= printf/cast.c printf/check.c printf/utils.c					\
 			  utils/ft_swap.c utils/ft_isalnum.c utils/ft_isalpha.c			\
 			  utils/ft_isascii.c utils/ft_isdigit.c							\
 			  utils/ft_islower.c utils/ft_isprint.c utils/ft_isupper.c		\
-			  utils/ft_error.c												\
+			  utils/ft_error.c utils/ft_isdigitstr.c						\
 			  utils/ft_tolower.c utils/ft_toupper.c utils/get_next_line.c
 #------------------------------------------------------------------------------#
 

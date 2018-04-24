@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../../includes/vm.h"
 
-int	is_reg(t_process *process, int nb_param)
+int	is_reg(t_proc *process, int nb_param)
 {
 	if (PARAM(nb_param) >= 1 && PARAM(nb_param) <= 16)
 		return (1);

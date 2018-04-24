@@ -6,15 +6,15 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 16:51:56 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/04 17:03:46 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/15 18:54:58 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../../includes/vm.h"
 
-void	lld(t_vm *vm, t_process *process)
+void	ft_lld(t_vm *data, t_proc *process)
 {
-	int	data;
+	int	address;
 
 	if (is_reg(process, 1))
 	{
@@ -22,12 +22,12 @@ void	lld(t_vm *vm, t_process *process)
 			REG(1) = PARAM(0);
 		else if (PARAM_TYPE(0) == IND_CODE)
 		{
-			data = circular_mem(PC + PARAM(0));
-			REG(1) = ft_load(vm, 4, data);
+			address = circular_mem(PC + PARAM(0));
+			REG(1) = ft_ramcpy(data, 4, address);
 		}
-		if (verbose_operations(vm))
+		if (verbose_operations(data))
 			ft_printf("P %4d | lld %d r%d\n", ID, REG(1), PARAM(1));
 		process->carry = REG(1) ? 0 : 1;
 	}
-	advance_pc(vm, process);
+	advance_pc(data, process);
 }

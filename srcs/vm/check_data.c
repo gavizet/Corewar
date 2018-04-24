@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store.c                                            :+:      :+:    :+:   */
+/*   check_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 14:07:22 by rlangeoi          #+#    #+#             */
-/*   Updated: 2018/04/22 15:23:23 by rlangeoi         ###   ########.fr       */
+/*   Created: 2018/04/01 17:25:14 by rlangeoi          #+#    #+#             */
+/*   Updated: 2018/04/06 20:00:02 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-void	store_reg(t_vm *data, int address, int reg_val)
+int	ft_check_data(t_vm *data)
 {
-	while (address < 0)
-		address = address + MEM_SIZE;
-	MEMORY(address + 3) = reg_val;
-	MEMORY(address + 2) = (reg_val >> 8);
-	MEMORY(address + 1) = (reg_val >> 16);
-	MEMORY(address + 0) = (reg_val >> 24);
+	int i;
+
+	i = -1;
+	while (++i < MAX_PLAYERS)
+	{
+		if (data->players[i][0] != '\0')
+			(data->nb_players)++;
+	}
+	if (data->nb_players == 0)
+		exit_error("No Players", NULL);
+	if (data->dump < -1 || (char)data->verbose < 0)
+		exit_error(ERR_DUMP, NULL);
+	return (0);
 }

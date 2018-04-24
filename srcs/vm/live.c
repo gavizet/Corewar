@@ -6,45 +6,45 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 09:27:20 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/06 14:53:22 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 14:30:41 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../../includes/vm.h"
 
-char	*get_player(t_vm *vm, int nb_champ)
+char	*get_player(t_vm *data, int nb_champ)
 {
 	t_list		*champs;
-	t_process	*process;
+	t_proc		*process;
 
-	champs = vm->champions;
+	champs = data->processes;
 	while (champs)
 	{
 		process = champs->content;
-		if (nb_champ == process->id_champ)
+		if (nb_champ == (-1 * process->player))
 		{
-			process->nb_live++;
-			return (process->header.prog_name);
+			return (process->header->prog_name);
 		}
 		champs = champs->next;
 	}
 	return (NULL);
 }
 
-void	live(t_vm *vm, t_process *process)
+void	ft_live(t_vm *data, t_proc *process)
 {
 	char	*player;
 
-	if (verbose_operations(vm))
+	if (verbose_operations(data))
 		ft_printf("P% 5d | live %d\n", ID, PARAM(0));
-	process->cycles_wo_live = 0;
-	vm->live++;
-	player = get_player(vm, PARAM(0));
+	data->live++;
+	process->live_at_cycle = 0;
+	player = get_player(data, PARAM(0));
 	if (player)
 	{
-		vm->last_live = PARAM(0);
-		if (verbose_live(vm))
-			ft_printf("Player %d (%s) is said to be alive\n", ft_abs(PARAM(0)), player);
+		data->last_live = PARAM(0);
+		if (verbose_live(data))
+			ft_printf("Player %d (%s) is said to be alive\n",
+					ABS(PARAM(0)), player);
 	}
-	advance_pc(vm, process);
+	advance_pc(data, process);
 }

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:21:31 by gavizet           #+#    #+#             */
-/*   Updated: 2018/03/31 13:31:17 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:24:55 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # endif
 
 # define FT_ABS(n)	((n) > 0 ? (n) : -(n))
+# define ABS(x)	((x) > 0 ? (x) : (-1 * x))
 
 int					ft_abs(int nb);
 int					ft_sqrt(int nb);

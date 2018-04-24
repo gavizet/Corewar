@@ -60,13 +60,15 @@ SRCS_FILES	= printf/cast.c printf/check.c printf/utils.c					\
 			  lst/ft_lstmap.c lst/ft_lstnew.c lst/ft_lstrev.c				\
 			  lst/ft_lstsize.c lst/ft_lstiter.c lst/ft_lstclear.c			\
 			  lst/ft_lstprint.c	lst/ft_lstdelone.c lst/ft_lstaddback.c		\
+			  lst/ft_lstrm.c lst/ft_lstrm_at.c lst/ft_lst_at.c				\
+			  lst/ft_lstdelcontent.c										\
 			  maths/ft_abs.c maths/ft_pow.c	maths/ft_atoi.c maths/ft_itoa.c	\
 			  maths/ft_sqrt.c maths/ft_rec_fac.c maths/reverse_octet.c		\
 			  maths/ft_itoa_base_uns.c maths/ft_itoa_base_signed.c			\
 			  mem/ft_bzero.c mem/ft_memcpy.c mem/ft_memchr.c				\
 			  mem/ft_memcmp.c mem/ft_memdel.c mem/ft_memset.c				\
 			  mem/ft_memccpy.c mem/ft_memmove.c	mem/free_tab2d.c			\
-			  mem/ft_memalloc.c	mem/ft_exit_malloc_error.c						\
+			  mem/ft_memalloc.c	mem/ft_exit_malloc_error.c					\
 			  output/ft_putnbr.c output/ft_putstr.c output/ft_putchar.c		\
 			  output/ft_putendl.c output/ft_putwchar.c						\
 			  output/ft_putnwstr.c output/ft_putnbr_fd.c					\
@@ -86,7 +88,7 @@ SRCS_FILES	= printf/cast.c printf/check.c printf/utils.c					\
 			  utils/ft_swap.c utils/ft_isalnum.c utils/ft_isalpha.c			\
 			  utils/ft_isascii.c utils/ft_isdigit.c							\
 			  utils/ft_islower.c utils/ft_isprint.c utils/ft_isupper.c		\
-			  utils/ft_error.c											\
+			  utils/ft_error.c utils/ft_isdigitstr.c						\
 			  utils/ft_tolower.c utils/ft_toupper.c utils/get_next_line.c
 #------------------------------------------------------------------------------#
 

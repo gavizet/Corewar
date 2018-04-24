@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store.c                                            :+:      :+:    :+:   */
+/*   ft_lstrm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 14:07:22 by rlangeoi          #+#    #+#             */
-/*   Updated: 2018/04/22 15:23:23 by rlangeoi         ###   ########.fr       */
+/*   Created: 2018/04/12 15:14:02 by rlangeoi          #+#    #+#             */
+/*   Updated: 2018/04/24 18:32:50 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vm.h"
+#include "../../includes/libft.h"
 
-void	store_reg(t_vm *data, int address, int reg_val)
+void		ft_lstrm(t_list **alst, t_list *prev)
 {
-	while (address < 0)
-		address = address + MEM_SIZE;
-	MEMORY(address + 3) = reg_val;
-	MEMORY(address + 2) = (reg_val >> 8);
-	MEMORY(address + 1) = (reg_val >> 16);
-	MEMORY(address + 0) = (reg_val >> 24);
+	t_list	*next;
+	void	(*f)(void*, size_t);
+
+	f = &ft_lstdelcontent;
+	if (alst && *alst)
+	{
+		next = (*alst)->next;
+		if (prev)
+			prev->next = (*alst)->next;
+		ft_lstdelone(alst, f);
+		if (prev)
+			(*alst) = prev;
+		else
+			(*alst) = next;
+	}
 }

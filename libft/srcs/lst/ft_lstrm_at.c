@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store.c                                            :+:      :+:    :+:   */
+/*   ft_lstrm_at.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlangeoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 14:07:22 by rlangeoi          #+#    #+#             */
-/*   Updated: 2018/04/22 15:23:23 by rlangeoi         ###   ########.fr       */
+/*   Created: 2018/04/15 19:46:07 by rlangeoi          #+#    #+#             */
+/*   Updated: 2018/04/24 18:29:39 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vm.h"
+#include "../includes/libft.h"
 
-void	store_reg(t_vm *data, int address, int reg_val)
+void		ft_lstrm_at(t_list **alst, int nb)
 {
-	while (address < 0)
-		address = address + MEM_SIZE;
-	MEMORY(address + 3) = reg_val;
-	MEMORY(address + 2) = (reg_val >> 8);
-	MEMORY(address + 1) = (reg_val >> 16);
-	MEMORY(address + 0) = (reg_val >> 24);
+	t_list	*cur;
+	t_list	*prev;
+	int		i;
+
+	i = 0;
+	cur = (*alst);
+	prev = NULL;
+	while (++i < nb && cur)
+	{
+		prev = cur;
+		cur = cur->next;
+	}
+	if (cur)
+	{
+		if (prev)
+			prev->next = cur->next;
+		else if (nb == 1)
+			(*alst) = cur->next;
+		ft_lstdelone(&cur, &ft_lstdelcontent);
+	}
 }

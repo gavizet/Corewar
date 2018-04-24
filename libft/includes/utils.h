@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:29:48 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 13:58:57 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:52:31 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int					ft_tolower(int n);
 int					ft_isupper(int nb);
 void				ft_error(char *error);
 void				ft_swap(void **a, void **b);
+int					ft_isdigitstr(const char *str);
 int					get_next_line(const int fd, char **line);
 
 #endif

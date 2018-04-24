@@ -6,13 +6,13 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 19:57:40 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/22 17:50:06 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 18:28:28 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_words(const char *str, char c)
+int				ft_words(const char *str, char c)
 {
 	int wds;
 

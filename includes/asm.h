@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:07 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 17:03:47 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:26:56 by rlangeoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "op.h"
 # include "../libft/includes/libft.h"
 

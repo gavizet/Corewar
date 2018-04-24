@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 15:50:54 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 17:03:00 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 19:40:00 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ int		parse_token2(t_token *token)
 		}
 		else if (token->type == DIRECT)
 		{
-			if ((str_isdigit(token->str + 1)) == -1)
+			if (token->str[1] == '-')
+			{
+				if ((str_isdigit(token->str + 2)) == -1)
+					return (1);
+			}
+			else if ((str_isdigit(token->str + 1)) == -1)
 				return (1);
 		}
 	}

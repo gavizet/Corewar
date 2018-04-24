@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 17:28:00 by rlangeoi         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:50:16 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ int		init_line(t_asm *file, int line_type, char *str, int line_nb)
 int		token_error(t_token *token)
 {
 	if ((token->str[0] == '%' && token->str[1] == ':') &&
-			(ft_strlen(token->str)) < 4)
+			(ft_strlen(token->str)) < 3)
 	{
 		free(token);
 		return (1);
 	}
 	else if ((token->str[0] == '%' || token->str[0] == 'r' ||
-				token->str[0] == ':')
-			&& (ft_strlen(token->str)) < 3)
+				token->str[0] == ':') && (ft_strlen(token->str)) < 2)
 	{
 		free(token);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:34:09 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 17:00:47 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 19:59:35 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int			get_exe(t_asm *file, char *file_name)
 	char	*search;
 	char	*output;
 
-	search = ft_strnew(0);
-	output = ft_strnew(0);
-	file->exec_name = ft_strnew(0);
+	output = NULL;
 	search = ft_strrchr(file_name, '.');
 	if (!search)
 		return (1);

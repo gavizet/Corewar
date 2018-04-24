@@ -6,7 +6,7 @@
 /*   By: gavizet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 13:44:45 by gavizet           #+#    #+#             */
-/*   Updated: 2018/04/24 17:02:30 by gavizet          ###   ########.fr       */
+/*   Updated: 2018/04/24 17:30:35 by gavizet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		init_token(t_line *line, int start, int end)
 	token->value = 0;
 	token->type = DONT_KNOW;
 	ft_strncpy(token->str, &(line->str[start]), end - start);
-	if ((error_token(token)) == 1)
+	if ((token_error(token)) == 1)
 		return (1);
 	token->str[end - start] = 0;
 	if (parse_token(token, line))
